@@ -1,4 +1,6 @@
 ﻿  main.cpp
-d:\crossingroad\crossindroadno\crossindroadno\main.cpp(17): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
-d:\crossingroad\crossindroadno\crossindroadno\main.cpp(90): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+d:\crossingroad\crossindroadno\crossindroadno\main.cpp(15): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
+  stdafx.cpp
+d:\crossingroad\crossindroadno\crossindroadno\stdafx.cpp(17): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  코드를 생성하고 있습니다...
   CrossindRoadNo.vcxproj -> D:\CrossingRoad\CrossindRoadNo\Debug\CrossindRoadNo.exe
