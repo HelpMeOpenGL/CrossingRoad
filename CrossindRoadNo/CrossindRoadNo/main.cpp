@@ -9,6 +9,11 @@ void Mouse(int button, int state, int x, int y);
 void Motion(int x, int y);
 void Keyboard(unsigned char key, int x, int y);
 
+//============= ¸Ê =====================
+int MAP[MAP_SIZE_Y][MAP_SIZE_X];
+
+
+//============= Ä³¸¯ÅÍ =================
 
 
 void main(int argc, char *argv[])
