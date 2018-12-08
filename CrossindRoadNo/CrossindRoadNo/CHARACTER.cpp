@@ -49,7 +49,9 @@ void CHARACTER::keyboard(unsigned char input){
 }
 
 void CHARACTER::draw_body(){
+	glPushMatrix(); {
 
+	}glPopMatrix();
 }
 
 void CHARACTER::draw_leg(){

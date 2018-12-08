@@ -227,14 +227,7 @@ void Keyboard(unsigned char key, int x, int y) {
 }
 
 void SpecialKeyboard(int key, int x, int y) {
-	switch (key)
-	{
-	case GLUT_KEY_UP:
-		cout << "UP" << endl;
-		break;
-	default:
-		break;
-	}
+	
 	character1.keyboard(key);
 }
 void global_init() {
@@ -243,7 +236,7 @@ void global_init() {
 	//sprintf(tmp, "TestHedra.obj");
 	//test1.Load(tmp);
 
-	character1.KeySetting(GLUT_KEY_UP, VK_DOWN, VK_RIGHT, VK_LEFT);
+	character1.KeySetting(GLUT_KEY_UP, GLUT_KEY_DOWN, GLUT_KEY_RIGHT, GLUT_KEY_LEFT);
 
 }
 
