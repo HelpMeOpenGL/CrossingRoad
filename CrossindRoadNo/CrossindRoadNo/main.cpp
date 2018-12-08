@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "Header.h"
 
+
+//TEST MERGE ARR << 머지에러 테스트용
+
 using namespace std;
 
 GLvoid drawScene(GLvoid);
