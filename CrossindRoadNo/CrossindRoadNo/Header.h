@@ -2,6 +2,7 @@
 #define SOUND_COUNT 10
 
 void printtext(int x, int y, std::string String);
+
 //======== 초기화 관련 함수============
 void Map_Reset();
 

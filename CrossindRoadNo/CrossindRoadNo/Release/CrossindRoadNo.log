@@ -1,0 +1,10 @@
+﻿  CHARACTER.cpp
+  Csound.cpp
+  main.cpp
+f:\crossingroad\crossindroadno\crossindroadno\main.cpp(27): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
+  stdafx.cpp
+f:\crossingroad\crossindroadno\crossindroadno\stdafx.cpp(17): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  코드를 생성하고 있습니다.
+  All 142 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  코드를 생성했습니다.
+  CrossindRoadNo.vcxproj -> F:\CrossingRoad\CrossindRoadNo\Release\CrossindRoadNo.exe
