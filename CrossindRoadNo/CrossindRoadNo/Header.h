@@ -5,7 +5,7 @@ void printtext(int x, int y, std::string String);
 //======== 초기화 관련 함수============
 void Map_Reset();
 
-
+void LoadFile();
 
 
 //========= 맵관련 함수 =============

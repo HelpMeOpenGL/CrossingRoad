@@ -35,8 +35,8 @@ void main(int argc, char *argv[])
 
 	glutMainLoop();
 }
-void LoadFile()
-{
+
+void LoadFile(){
 	ifstream in("mapdata.txt");
 
 	int i = 0;
@@ -108,6 +108,7 @@ void Keyboard(unsigned char key, int x, int y) {
 	switch (key)
 	{
 	case 'q':
+		glutDestroyWindow(0);
 		exit(1);
 		break;
 	default:
