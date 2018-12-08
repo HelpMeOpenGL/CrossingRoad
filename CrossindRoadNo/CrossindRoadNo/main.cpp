@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "Header.h"
 
 using namespace std;
 
@@ -19,6 +20,7 @@ int MAP[MAP_SIZE_Y][MAP_SIZE_X];
 
 void main(int argc, char *argv[])
 {
+	
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);	// 디스플레이 모드 설정 
 	glutInitWindowPosition(100, 100);	// 윈도우의 위치지정 
@@ -66,6 +68,7 @@ void LoadFile(){
 	//in.close();
 
 }
+
 // 윈도우 출력 함수
 GLvoid drawScene(GLvoid)
 {
@@ -116,6 +119,11 @@ void Keyboard(unsigned char key, int x, int y) {
 	}
 }
 
+void global_init() {
+
+
+}
+
 void Draw_Barrier(int Type, int x, int y) {
 	glPushMatrix(); {
 		glTranslated(x*CUBE_SIZE, 0, y*CUBE_SIZE);
@@ -135,3 +143,4 @@ void Draw_Barrier(int Type, int x, int y) {
 void Map_Reset() {
 
 }
+

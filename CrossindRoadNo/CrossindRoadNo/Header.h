@@ -7,6 +7,8 @@ void Map_Reset();
 
 void LoadFile();
 
+void global_init();
+
 
 //========= ¸Ê°ü·Ã ÇÔ¼ö =============
 
