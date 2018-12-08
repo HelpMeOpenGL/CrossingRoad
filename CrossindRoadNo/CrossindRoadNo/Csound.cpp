@@ -2,8 +2,8 @@
 #include "Csound.h"
 
 
-CSound::CSound()
-{
+CSound::CSound(){
+
 	FMOD::System_Create(&pSystem);
 	pSystem->init(
 		SOUND_NUM
@@ -14,8 +14,8 @@ CSound::CSound()
 }
 
 
-CSound::~CSound()
-{
+CSound::~CSound(){
+
 	for (int i = 0; i < SOUND_NUM; ++i)
 	{
 		pSound[i]->release();
@@ -25,8 +25,8 @@ CSound::~CSound()
 	pSystem->close();
 }
 
-void CSound::Add_sound()
-{
+void CSound::Add_sound(){
+
 	//사운드 추가 
 	//배경음
 	pSystem->createStream(
@@ -38,11 +38,9 @@ void CSound::Add_sound()
 
 }
 
-void CSound::Play(int n)
-{
-	pSystem->update();
+void CSound::Play(int n){
 
-	pSystem->playSound(pSound[n]
-		, nullptr, false, &pChannel[n]);
+	pSystem->update();
+	pSystem->playSound(pSound[n], nullptr, false, &pChannel[n]);
 
 }

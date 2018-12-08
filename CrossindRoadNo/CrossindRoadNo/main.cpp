@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Header.h"
+#include "CHARACTER.h"
 
 
 //TEST MERGE ARR << 머지에러 테스트용
@@ -21,6 +22,7 @@ int MAP[MAP_SIZE_Y][MAP_SIZE_X];
 
 
 //============= 캐릭터 =================
+CHARACTER character1;
 
 
 void main(int argc, char *argv[])
