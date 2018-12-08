@@ -1,13 +1,13 @@
 #include "stdafx.h"
 #include "Header.h"
-
+#include "Csound.h"
 
 //TEST MERGE ARR << 머지에러 테스트용
 //한번더 테스트 가즈아ㅏ
 
 
 using namespace std;
-
+CSound snd;
 GLvoid drawScene(GLvoid);
 GLvoid Reshape(int w, int h);
 void Timer(int value);
@@ -153,6 +153,11 @@ void Keyboard(unsigned char key, int x, int y) {
 	case 'q':
 		glutDestroyWindow(0);
 		exit(1);
+		break;
+	case 'b':
+		snd.pSound[0]->release();
+		snd.Add_sound();
+		snd.Play(0);
 		break;
 	default:
 		break;
