@@ -4,13 +4,18 @@
 #define KEY_RIGHT 2
 #define KEY_LEFT 3
 
+#define STATE_IDLE 0
+#define STATE_MOVE 1
+#define STATE_DAMAGE 2
+
 class CHARACTER{
 
 private:
 	int local_time;
 	int type;
 	int key[4];
-
+	int state;
+	bool timerPingPong;
 public:
 	CHARACTER();
 	~CHARACTER();

@@ -3,13 +3,7 @@
 #include "CHARACTER.h"
 
 #include "Csound.h"
-#include "Model_OBJ.h"
 
-
-#include "Csound.h"
-
-//TEST MERGE ARR << 머지에러 테스트용
-//한번더 테스트 가즈아ㅏ
 
 
 using namespace std;
@@ -28,7 +22,7 @@ int MAP[MAP_SIZE_X][MAP_SIZE_Y];
 
 //============= 캐릭터 =================
 CHARACTER character1;
-Model_OBJ test1;
+
 
 int main(int argc, char *argv[]){
 	global_init();
@@ -37,7 +31,7 @@ int main(int argc, char *argv[]){
 	glutInitWindowPosition(100, 100);	// 윈도우의 위치지정 
 	glutInitWindowSize(1920, 1080);	// 윈도우의 크기 지정 
 	glutCreateWindow("CrossingRoad");	// 윈도우 생성 (윈도우 이름) 
-	glutFullScreenToggle();
+	//glutFullScreenToggle();
 	glutDisplayFunc(drawScene);	// 출력 함수의 지정
 	glutReshapeFunc(Reshape);
 	glutKeyboardFunc(Keyboard);
@@ -117,10 +111,10 @@ GLvoid drawScene(GLvoid)
 					glPushMatrix(); {
 						glColor3ub(132, 132, 132);
 						glBegin(GL_QUADS);
-						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
-						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
-						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
-						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
 						glEnd();
 					}glPopMatrix();
 					break;
@@ -128,10 +122,10 @@ GLvoid drawScene(GLvoid)
 					glPushMatrix(); {
 						glColor3ub(152, 186, 50);
 						glBegin(GL_QUADS);
-						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
-						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
-						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
-						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
 						glEnd();
 					}glPopMatrix();
 					break;
@@ -152,10 +146,10 @@ GLvoid drawScene(GLvoid)
 					glPushMatrix(); {
 						glColor3ub(232, 232, 232);
 						glBegin(GL_QUADS);
-						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
-						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
-						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
-						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
 						glEnd();
 						glBegin(GL_QUADS);
 						glEnd();
@@ -232,9 +226,7 @@ void SpecialKeyboard(int key, int x, int y) {
 }
 void global_init() {
 	LoadFile();
-	char tmp[64];	
-	//sprintf(tmp, "TestHedra.obj");
-	//test1.Load(tmp);
+	
 
 	character1.KeySetting(GLUT_KEY_UP, GLUT_KEY_DOWN, GLUT_KEY_RIGHT, GLUT_KEY_LEFT);
 

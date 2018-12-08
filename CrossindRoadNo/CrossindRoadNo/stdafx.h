@@ -2,8 +2,6 @@
 
 //기본헤더
 #include <GL/freeglut.h> 
-#include <GL/gl.h>
-#include <GL/GLU.h>
 #include <GL/glut.h>
 #include <iostream>
 #include <fstream>
@@ -11,14 +9,10 @@
 #include <math.h>
 #include <time.h>
 #include <fstream>
-#include <sstream>
 #include <string>
-#include <string.h>
 #include <vector>
 #include <cmath>
-#include <Windows.h>
 #include "FMOD/include/fmod.hpp"
-#include "glm/glm.hpp"
 
 #define MAP_SIZE_X 200 //좌우로는 30정도?
 #define MAP_SIZE_Y 30 //200번정도 뛰면 도착하게 하자구?
