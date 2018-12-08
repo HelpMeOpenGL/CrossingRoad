@@ -1,11 +1,8 @@
 #include "stdafx.h"
 #include "Header.h"
-<<<<<<< .merge_file_a23624
 #include "CHARACTER.h"
 
-=======
 #include "Csound.h"
->>>>>>> .merge_file_a26916
 
 //TEST MERGE ARR << 머지에러 테스트용
 //한번더 테스트 가즈아ㅏ
@@ -88,16 +85,19 @@ GLvoid drawScene(GLvoid)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	// 설정된 색으로 전체를 칠하기 
 	//출력 전후
 	glEnable(GL_DEPTH_TEST);
+
 	//맵 잘찍히나 테스트
 	glPushMatrix(); {
 		glRotated(-90, 1, 0, 0);
 		glRotated(90, 0, 1, 0);
-
+		//맵 숫자
+		//0_땅 1_도로 2_벽 3_물 4_물거품(물 뽀글뽀글) 5_나무 6_돌
 		for (int j = 0; j < MAP_SIZE_Y; j++) {
 			for (int i = 0; i < MAP_SIZE_X; i++) {
-				if (MAP[i][j] == 0) {//0번타일(풀)
+				switch (MAP[i][j])
+				{
+				case 0:
 					glPushMatrix(); {
-						//cout << "0번" << endl;
 						glColor3ub(162, 206, 50);
 						glBegin(GL_QUADS);
 						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
@@ -106,11 +106,10 @@ GLvoid drawScene(GLvoid)
 						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
 						glEnd();
 					}glPopMatrix();
-				}
-				if (MAP[i][j] == 1) {//1번타일(물)
+					break;
+				case 1:
 					glPushMatrix(); {
-						//cout << "1번" << endl;
-						glColor3ub(50, 162, 206);
+						glColor3ub(132, 132, 132);
 						glBegin(GL_QUADS);
 						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
 						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
@@ -118,8 +117,47 @@ GLvoid drawScene(GLvoid)
 						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
 						glEnd();
 					}glPopMatrix();
+					break;
+				case 2://벽
+					glPushMatrix(); {
+						glColor3ub(152, 186, 50);
+						glBegin(GL_QUADS);
+						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
+						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
+						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
+						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
+						glEnd();
+					}glPopMatrix();
+					break;
+				case 3:
+					glPushMatrix(); {
+						glColor3ub(50, 162, 206);
+						glBegin(GL_QUADS);
+						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
+						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
+						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
+						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
+						glEnd();
+						glBegin(GL_QUADS);
+						glEnd();
+					}glPopMatrix();
+					break;
+				case 4://물거품
+					glPushMatrix(); {
+						glColor3ub(232, 232, 232);
+						glBegin(GL_QUADS);
+						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
+						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
+						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
+						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
+						glEnd();
+						glBegin(GL_QUADS);
+						glEnd();
+					}glPopMatrix();
+					break;
+				default:
+					break;
 				}
-				else;
 			}
 		}
 	}glPopMatrix();
@@ -132,7 +170,7 @@ GLvoid Reshape(int w, int h)
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluPerspective(60, (float)1920 / 1080, 1.0, 1000);
-	glTranslatef(0, 0, -500);
+	glTranslatef(0, 0, -300);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 }
@@ -164,6 +202,12 @@ void Keyboard(unsigned char key, int x, int y) {
 		snd.pSound[0]->release();
 		snd.Add_sound();
 		snd.Play(0);
+		break;
+	case '.':
+		glTranslatef(0, CUBE_SIZE, 0);
+		break;
+	case ',':
+		glTranslatef(0, -CUBE_SIZE, 0);
 		break;
 	default:
 		break;
