@@ -1,11 +1,8 @@
 #include "stdafx.h"
 #include "Header.h"
-<<<<<<< .merge_file_a23624
 #include "CHARACTER.h"
-
-=======
 #include "Csound.h"
->>>>>>> .merge_file_a26916
+#include "Model_OBJ.h"
 
 //TEST MERGE ARR << 머지에러 테스트용
 //한번더 테스트 가즈아ㅏ
@@ -26,10 +23,9 @@ int MAP[MAP_SIZE_X][MAP_SIZE_Y];
 
 //============= 캐릭터 =================
 CHARACTER character1;
+Model_OBJ test1;
 
-
-void main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]){
 	global_init();
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);	// 디스플레이 모드 설정 
@@ -43,9 +39,10 @@ void main(int argc, char *argv[])
 	glutMouseFunc(Mouse);
 	glutPassiveMotionFunc(Motion);
 	glutTimerFunc(100, Timer, 1);
-
+	
 
 	glutMainLoop();
+	return 0;
 }
 
 void LoadFile(){
@@ -88,6 +85,7 @@ GLvoid drawScene(GLvoid)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	// 설정된 색으로 전체를 칠하기 
 	//출력 전후
 	glEnable(GL_DEPTH_TEST);
+
 	//맵 잘찍히나 테스트
 	glPushMatrix(); {
 		glRotated(-90, 1, 0, 0);
@@ -100,10 +98,10 @@ GLvoid drawScene(GLvoid)
 						//cout << "0번" << endl;
 						glColor3ub(162, 206, 50);
 						glBegin(GL_QUADS);
-						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
-						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
-						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
-						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
 						glEnd();
 					}glPopMatrix();
 				}
@@ -112,16 +110,21 @@ GLvoid drawScene(GLvoid)
 						//cout << "1번" << endl;
 						glColor3ub(50, 162, 206);
 						glBegin(GL_QUADS);
-						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
-						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
-						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
-						glVertex3f(-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), 0, -(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
 						glEnd();
 					}glPopMatrix();
 				}
 				else;
 			}
 		}
+		glPushMatrix(); {
+			
+			test1.Draw();
+		}glPopMatrix();
+		
 	}glPopMatrix();
 	glutSwapBuffers(); // 화면에 출력하기
 }
@@ -172,7 +175,9 @@ void Keyboard(unsigned char key, int x, int y) {
 
 void global_init() {
 	LoadFile();
-
+	char tmp[64];	
+	sprintf(tmp, "KagamineLen.obj");
+	test1.Load(tmp);
 }
 
 void Draw_Barrier(int Type, int x, int y) {

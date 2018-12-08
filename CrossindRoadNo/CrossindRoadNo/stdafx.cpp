@@ -24,3 +24,4 @@ void printtext(int x, int y, std::string String)
 	glMatrixMode(GL_MODELVIEW);
 	glPopMatrix();
 }
+
