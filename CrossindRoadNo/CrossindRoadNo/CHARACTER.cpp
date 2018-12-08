@@ -17,26 +17,26 @@ void CHARACTER::init(){
 
 }
 
-void CHARACTER::reset()
-{
+void CHARACTER::reset(){
+
 }
 
-void CHARACTER::draw()
-{
+void CHARACTER::draw(){
+
 }
 
-void CHARACTER::update()
-{
+void CHARACTER::update(){
+
 }
 
-void CHARACTER::keyboard()
-{
+void CHARACTER::keyboard(){
+
 }
 
-void CHARACTER::draw_body()
-{
+void CHARACTER::draw_body(){
+
 }
 
-void CHARACTER::draw_leg()
-{
+void CHARACTER::draw_leg(){
+	
 }

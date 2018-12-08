@@ -2,6 +2,8 @@
 
 //기본헤더
 #include <GL/freeglut.h> 
+#include <GL/gl.h>
+#include <GL/glut.h>
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
