@@ -6,6 +6,8 @@
 #include <stdio.h>
 #include <math.h>
 #include <time.h>
+#include <fstream>
+#include <string>
 #include "FMOD/include/fmod.hpp"
 
 #define MAP_SIZE_X 30 //좌우로는 30정도?
@@ -13,4 +15,7 @@
 
 #define CUBE_SIZE 50 //한칸의 크기 < 어느정도 점프할지랑 이것저것 요긴하게 쓰일듯
 
-void printtext(int x, int y, std::string String);
+#define SCENE_LOBBY 10000
+#define SCENE_MAINGAME 10001
+#define SCENE_END 10002
+

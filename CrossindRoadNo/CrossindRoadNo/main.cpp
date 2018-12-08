@@ -77,3 +77,21 @@ void Keyboard(unsigned char key, int x, int y) {
 
 }
 
+void Draw_Barrier(int Type, int x, int y) {
+	glPushMatrix(); {
+		glTranslated(x*CUBE_SIZE, 0, y*CUBE_SIZE);
+		switch (Type) {
+		case 0:
+			glRotated(-90, 1, 0, 0);
+			glutSolidCone(CUBE_SIZE, CUBE_SIZE, 12, 3);
+			break;
+		case 1:
+			glutSolidCube(CUBE_SIZE);
+			break;
+		}
+	}glPopMatrix();
+}
+
+void Map_Reset() {
+
+}

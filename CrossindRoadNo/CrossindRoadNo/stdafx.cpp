@@ -1,5 +1,5 @@
 #include "stdafx.h"
-
+#include "Header.h"
 
 void printtext(int x, int y, std::string String)
 {
