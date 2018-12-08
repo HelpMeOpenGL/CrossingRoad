@@ -20,6 +20,7 @@ void Timer(int value);
 void Mouse(int button, int state, int x, int y);
 void Motion(int x, int y);
 void Keyboard(unsigned char key, int x, int y);
+void SpecialKeyboard(int key, int x, int y);
 void Draw_Barrier(int Type, int x, int y);
 
 //============= 맵 =====================
@@ -40,6 +41,7 @@ int main(int argc, char *argv[]){
 	glutDisplayFunc(drawScene);	// 출력 함수의 지정
 	glutReshapeFunc(Reshape);
 	glutKeyboardFunc(Keyboard);
+	glutSpecialFunc(SpecialKeyboard);
 	glutMouseFunc(Mouse);
 	glutPassiveMotionFunc(Motion);
 	glutTimerFunc(100, Timer, 1);
@@ -164,10 +166,10 @@ GLvoid drawScene(GLvoid)
 				}
 			}
 		}
-		glPushMatrix(); {
+		/*glPushMatrix(); {
 			
 			test1.Draw();
-		}glPopMatrix();
+		}glPopMatrix();*/
 		
 	}glPopMatrix();
 	glutSwapBuffers(); // 화면에 출력하기
@@ -221,13 +223,28 @@ void Keyboard(unsigned char key, int x, int y) {
 	default:
 		break;
 	}
+	character1.keyboard(key);
 }
 
+void SpecialKeyboard(int key, int x, int y) {
+	switch (key)
+	{
+	case GLUT_KEY_UP:
+		cout << "UP" << endl;
+		break;
+	default:
+		break;
+	}
+	character1.keyboard(key);
+}
 void global_init() {
 	LoadFile();
 	char tmp[64];	
-	sprintf(tmp, "KagamineLen.obj");
-	test1.Load(tmp);
+	//sprintf(tmp, "TestHedra.obj");
+	//test1.Load(tmp);
+
+	character1.KeySetting(GLUT_KEY_UP, VK_DOWN, VK_RIGHT, VK_LEFT);
+
 }
 
 void Draw_Barrier(int Type, int x, int y) {

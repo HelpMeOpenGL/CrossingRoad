@@ -9,7 +9,7 @@ class CHARACTER{
 private:
 	int local_time;
 	int type;
-	unsigned char key[4];
+	int key[4];
 
 public:
 	CHARACTER();
