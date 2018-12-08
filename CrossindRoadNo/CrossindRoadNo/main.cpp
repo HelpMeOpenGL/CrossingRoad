@@ -1,13 +1,12 @@
 #include "stdafx.h"
 #include "Header.h"
 #include "CHARACTER.h"
-<<<<<<< HEAD
-#include "Csound.h"
-#include "Model_OBJ.h"
-=======
 
 #include "Csound.h"
->>>>>>> 1f76c35012716b9798e608527540602ab1ca34a1
+#include "Model_OBJ.h"
+
+
+#include "Csound.h"
 
 //TEST MERGE ARR << 머지에러 테스트용
 //한번더 테스트 가즈아ㅏ
