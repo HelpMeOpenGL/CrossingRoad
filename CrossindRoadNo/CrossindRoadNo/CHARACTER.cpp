@@ -12,8 +12,9 @@ CHARACTER::~CHARACTER()
 {
 }
 
-void CHARACTER::init()
-{
+void CHARACTER::init(){
+	local_time = 0;
+
 }
 
 void CHARACTER::reset()

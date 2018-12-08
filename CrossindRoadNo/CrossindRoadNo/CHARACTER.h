@@ -2,7 +2,7 @@
 class CHARACTER
 {
 private:
-	int timer;
+	int local_time;
 	int type;
 
 public:
