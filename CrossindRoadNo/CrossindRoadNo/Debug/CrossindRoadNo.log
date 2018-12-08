@@ -1,6 +1,11 @@
 ﻿  main.cpp
-d:\crossingroad\crossindroadno\crossindroadno\main.cpp(15): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
-  stdafx.cpp
-d:\crossingroad\crossindroadno\crossindroadno\stdafx.cpp(17): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-  코드를 생성하고 있습니다...
-  CrossindRoadNo.vcxproj -> D:\CrossingRoad\CrossindRoadNo\Debug\CrossindRoadNo.exe
+c:\users\tiuri\documents\crossingroad\crossindroadno\crossindroadno\main.cpp(21): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
+c:\users\tiuri\documents\crossingroad\crossindroadno\crossindroadno\main.cpp(85): warning C4244: '인수': 'int'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\tiuri\documents\crossingroad\crossindroadno\crossindroadno\main.cpp(86): warning C4244: '인수': 'int'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\tiuri\documents\crossingroad\crossindroadno\crossindroadno\main.cpp(87): warning C4244: '인수': 'int'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\tiuri\documents\crossingroad\crossindroadno\crossindroadno\main.cpp(88): warning C4244: '인수': 'int'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\tiuri\documents\crossingroad\crossindroadno\crossindroadno\main.cpp(97): warning C4244: '인수': 'int'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\tiuri\documents\crossingroad\crossindroadno\crossindroadno\main.cpp(98): warning C4244: '인수': 'int'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\tiuri\documents\crossingroad\crossindroadno\crossindroadno\main.cpp(99): warning C4244: '인수': 'int'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\tiuri\documents\crossingroad\crossindroadno\crossindroadno\main.cpp(100): warning C4244: '인수': 'int'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  CrossindRoadNo.vcxproj -> C:\Users\tiuri\Documents\CrossingRoad\CrossindRoadNo\Debug\CrossindRoadNo.exe

@@ -8,6 +8,7 @@ void Timer(int value);
 void Mouse(int button, int state, int x, int y);
 void Motion(int x, int y);
 void Keyboard(unsigned char key, int x, int y);
+void Draw_Barrier(int Type, int x, int y);
 
 //============= 맵 =====================
 int MAP[MAP_SIZE_Y][MAP_SIZE_X];
@@ -34,7 +35,37 @@ void main(int argc, char *argv[])
 
 	glutMainLoop();
 }
+void LoadFile()
+{
+	ifstream in("mapdata.txt");
 
+	int i = 0;
+	int j = 0;
+	char c;
+
+	if (in.fail()) { cout << "파일을 여는 데 실패했습니다." << endl; }
+
+	for (int i = 0; i < MAP_SIZE_X; i++)
+	{
+		for (int j = 0; j < MAP_SIZE_Y; j++)
+		{
+			in.get(c);
+			MAP[i][j] = c - 48;
+		}
+		in.get(c);
+	}
+	////출력해보기
+	//for (int i = 0; i < MAP_SIZE_X; i++)
+	//{
+	//	for (int j = 0; j < MAP_SIZE_Y; j++)
+	//	{
+	//		printf("%d", MAP[i][j]);
+	//	}
+	//	printf("\n");
+	//}
+	//in.close();
+
+}
 // 윈도우 출력 함수
 GLvoid drawScene(GLvoid)
 {
@@ -42,8 +73,7 @@ GLvoid drawScene(GLvoid)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	// 설정된 색으로 전체를 칠하기 
 	//출력 전후
 	glEnable(GL_DEPTH_TEST);
-
-
+	
 	glutSwapBuffers(); // 화면에 출력하기
 }
 
@@ -53,6 +83,7 @@ GLvoid Reshape(int w, int h)
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluPerspective(60, (float)1920 / 1080, 1.0, 1000);
+	glTranslatef(0, 0, -300);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 }
@@ -74,7 +105,14 @@ void Motion(int x, int y) {
 }
 
 void Keyboard(unsigned char key, int x, int y) {
-
+	switch (key)
+	{
+	case 'q':
+		exit(1);
+		break;
+	default:
+		break;
+	}
 }
 
 void Draw_Barrier(int Type, int x, int y) {
@@ -86,6 +124,7 @@ void Draw_Barrier(int Type, int x, int y) {
 			glutSolidCone(CUBE_SIZE, CUBE_SIZE, 12, 3);
 			break;
 		case 1:
+			glColor3ub(255, 255, 255);
 			glutSolidCube(CUBE_SIZE);
 			break;
 		}
