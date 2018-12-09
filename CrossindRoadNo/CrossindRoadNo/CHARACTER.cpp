@@ -27,6 +27,11 @@ void CHARACTER::init(){
 	location.x = rand() % 20 + 5;
 	location.y = 5;
 	b_item_fog = false;
+	body_color[0] = 232;
+	body_color[1] = 199;
+	body_color[2] = 199;
+	//1 :: R = 232 G = 199 B = 199
+	//2 :: R = 30 G = 120 B = 230
 }
 
 void CHARACTER::reset(){
@@ -85,6 +90,7 @@ void CHARACTER::keyboard(unsigned char input){
 }
 
 void CHARACTER::draw_body(){
+<<<<<<< HEAD
 	glPushMatrix(); {
 		glTranslatef(location.x, location.y,0);
 		glRotatef(90, 1, 0, 0);
@@ -156,11 +162,78 @@ void CHARACTER::draw_body(){
 			glTranslatef(0, 22.5, 50);
 			glutSolidCube(20);
 		}glPopMatrix();
+=======
+	glRotatef(90, 1, 0, 0);
+	glPushMatrix(); {//个烹
+		glColor3ub(body_color[0], body_color[1], body_color[2]);
+		glTranslatef(0, 35, 0);
+		glScalef(0.9, 0.6, 0.9);
+		glutSolidCube(CUBE_SIZE);
+		glColor3f(0, 0, 0);
+		//glutWireCube(CUBE_SIZE);
+	}glPopMatrix();
+	glPushMatrix(); {//传
+		glColor3ub(232, 232, 232);
+		glTranslatef(-20, 40, -42);
+		glutSolidSphere(10, 8, 8);
+		glColor3f(0, 0, 0);
+		glTranslatef(0,0,-8);
+		glutSolidSphere(5, 8, 8);
+	}glPopMatrix();
+	glPushMatrix(); {//传
+		glColor3ub(232, 232, 232);
+		glTranslatef(20, 40, -42);
+		glutSolidSphere(10, 8, 8);
+
+		glColor3f(0, 0, 0);
+		glTranslatef(0, 0, -8);
+		glutSolidSphere(5, 8, 8);
+	}glPopMatrix();
+	glPushMatrix(); {//捞
+		glColor3ub(232, 232, 232);
+		glTranslatef(-6, 25, -50);
+		glScalef(1, 1.2, 1);
+		glutSolidCube(10);
+		glColor3f(0, 0, 0);
+		//glutWireCube(10);
+	}glPopMatrix();
+	glPushMatrix(); {//捞
+		glColor3ub(232, 232, 232);
+		glTranslatef(6, 25, -50);
+		glScalef(1, 1.2, 1);
+		glutSolidCube(10);
+		glColor3f(0, 0, 0);
+		//glutWireCube(10);
+	}glPopMatrix();
+	glPushMatrix(); {//蓖
+		glColor3ub(body_color[0] - 20, body_color[1] - 20, body_color[2] - 20);
+		glTranslatef(25, 80, 0);
+		glScalef(0.2, 0.4, 0.2);
+		glutSolidCube(CUBE_SIZE);
+		glColor3f(0, 0, 0);
+		glutWireCube(CUBE_SIZE);
+	}glPopMatrix();
+	glPushMatrix(); {
+		glColor3ub(body_color[0] - 20, body_color[1] - 20, body_color[2] - 20);
+		glTranslatef(-25, 80, 0);
+		glScalef(0.2, 0.4, 0.2);
+		glutSolidCube(CUBE_SIZE);
+		glColor3f(0, 0, 0);
+		glutWireCube(CUBE_SIZE);
+	}glPopMatrix();
+	glPushMatrix(); {//部府
+		glColor3ub(body_color[0] - 20, body_color[1] - 20, body_color[2] - 20);
+		glTranslatef(0, 22.5, 50);
+		glutSolidCube(20);
+		glColor3f(0, 0, 0);
+		glutWireCube(20);
+>>>>>>> ec7d55378ab2daa277bebabf2bd4f90a523726fa
 	}glPopMatrix();
 }
 
 void CHARACTER::draw_leg(){
 	glPushMatrix(); {
+<<<<<<< HEAD
 		glTranslatef(location.x, location.y, 0);
 		glPushMatrix(); {
 			glColor3ub(232, 199, 199);
@@ -178,6 +251,22 @@ void CHARACTER::draw_leg(){
 			glColor3f(0, 0, 0);
 			glutWireCube(5);
 		}glPopMatrix();
+=======
+		glColor3ub(body_color[0] - 20, body_color[1] - 20, body_color[2] - 20);
+		glTranslatef(25, 5, 0);
+		glScalef(0.2, 0.2, 0.2);
+		glutSolidCube(CUBE_SIZE);
+		glColor3f(0, 0, 0);
+		glutWireCube(5);
+	}glPopMatrix();
+	glPushMatrix(); {
+		glColor3ub(body_color[0] - 20, body_color[1] - 20, body_color[2] - 20);
+		glTranslatef(-25, 5, 0);
+		glScalef(0.2, 0.2, 0.2);
+		glutSolidCube(CUBE_SIZE);
+		glColor3f(0, 0, 0);
+		glutWireCube(5);
+>>>>>>> ec7d55378ab2daa277bebabf2bd4f90a523726fa
 	}glPopMatrix();
 }
 
@@ -239,4 +328,10 @@ void CHARACTER::KeySetting(unsigned char front, unsigned char back, unsigned cha
 	key[KEY_BACK] = back;	
 	key[KEY_RIGHT] = right;
 	key[KEY_LEFT] = left;
+}
+
+void CHARACTER::SetBodyColor(int R, int G, int B) {
+	body_color[0] = R;
+	body_color[1] = G;
+	body_color[2] = B;
 }
