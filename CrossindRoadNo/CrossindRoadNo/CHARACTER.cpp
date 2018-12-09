@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "CHARACTER.h"
 
-
-
 CHARACTER::CHARACTER(){
 	init();
 }
@@ -26,7 +24,7 @@ void CHARACTER::init(){
 	key_lock = false;
 	item_timer = 0;
 	item_timer2 = 0;
-	location.x = rand() % 20 + 5;
+	location.x = 5;
 	location.y = 5;
 	b_item_fog = false;
 	body_color[0] = 232;
@@ -45,7 +43,7 @@ void CHARACTER::init(){
 	move_timer = 0;
 	move_tmp = { 0,0 };
 	moveTmp = 0;
-
+	other_location = { 0,0 };
 }
 
 void CHARACTER::reset(){
@@ -54,6 +52,7 @@ void CHARACTER::reset(){
 
 void CHARACTER::draw(){
 	glPushMatrix(); {
+		//std::cout <<"CHARACTER :: 55 ::  " <<location.x << "   " << location.y << std::endl;
 		glTranslatef((GLfloat)location.x+move_tmp.x, (GLfloat)location.y + move_tmp.y, (GLfloat)jump_height);
 		glRotatef(90, 1, 0, 0);
 		if (dir == 2) {
@@ -186,8 +185,20 @@ void CHARACTER::keyboard(unsigned char input){
 	if (input == key[KEY_FRONT]) {
 		std::cout << "FRONT" << std::endl;
 		//location.y += 1 * CUBE_SIZE;
-		dir = 1;
 		call_jump();
+		dir = 1;
+		
+		//객체충돌
+		if (map[(int)location.x / CUBE_SIZE][(int)location.y / CUBE_SIZE+1] == 5) {
+			return;
+		}
+		if (map[(int)location.x / CUBE_SIZE][(int)location.y / CUBE_SIZE + 1] == 6) {
+			return;
+		}
+		//상대 플레이어 충돌체크
+		if (abs(other_location.x - location.x)+10 < CUBE_SIZE && abs(other_location.y - (location.y + CUBE_SIZE)) + 10 < CUBE_SIZE) {
+			return;
+		}
 		call_move();
 		
 	}
@@ -196,6 +207,19 @@ void CHARACTER::keyboard(unsigned char input){
 		//location.y -= 1 * CUBE_SIZE;
 		dir = 2; 
 		call_jump();
+
+		//객체충돌
+		if (map[(int)location.x / CUBE_SIZE][(int)location.y / CUBE_SIZE - 1] == 5) {
+			return;
+		}
+		if (map[(int)location.x / CUBE_SIZE][(int)location.y / CUBE_SIZE - 1] == 6) {
+			return;
+		}
+
+		//상대 플레이어 충돌체크
+		if (abs(other_location.x - location.x) + 10 < CUBE_SIZE && abs(other_location.y - (location.y - CUBE_SIZE)) + 10 < CUBE_SIZE) {
+			return;
+		}
 		call_move();
 		
 	}
@@ -204,6 +228,20 @@ void CHARACTER::keyboard(unsigned char input){
 		//location.x -= 1 * CUBE_SIZE;
 		dir = 3;
 		call_jump();
+
+		//객체충돌
+		if (map[(int)location.x / CUBE_SIZE - 1][(int)location.y / CUBE_SIZE] == 5) {
+			return;
+		}
+		if (map[(int)location.x / CUBE_SIZE - 1][(int)location.y / CUBE_SIZE] == 6) {
+			return;
+		}
+
+		//상대 플레이어 충돌체크
+		if (abs(other_location.x - (location.x - CUBE_SIZE)) + 10 < CUBE_SIZE && abs(other_location.y - location.y) + 10 < CUBE_SIZE) {
+			return;
+		}
+
 		call_move();
 		
 	}
@@ -212,6 +250,19 @@ void CHARACTER::keyboard(unsigned char input){
 		//location.x += 1 * CUBE_SIZE;
 		dir = 4;
 		call_jump();
+
+		//객체충돌
+		if (map[(int)location.x / CUBE_SIZE + 1][(int)location.y / CUBE_SIZE] == 5) {
+			return;
+		}
+		if (map[(int)location.x / CUBE_SIZE + 1][(int)location.y / CUBE_SIZE] == 6) {
+			return;
+		}
+
+		if (abs(other_location.x - (location.x + CUBE_SIZE)) + 10 < CUBE_SIZE && abs(other_location.y - location.y) + 10 < CUBE_SIZE) {
+			return;
+		}
+
 		call_move();
 		
 	}
@@ -309,8 +360,7 @@ void CHARACTER::idle_draw(){
 			draw_body();
 		}glPopMatrix();
 		draw_leg();		
-	}glPopMatrix();
-	
+	}glPopMatrix();	
 }
 
 void CHARACTER::idle_update(){
@@ -412,16 +462,31 @@ POINT CHARACTER::get_location(){
 	return location;
 }
 
-void CHARACTER::push_crush_check(int CrushType){
-	switch (CrushType) {
-
-	}
-
+void CHARACTER::load_location(POINT input){
+	other_location = input;
 }
 
+void CHARACTER::update_map_obj(CAR *obj){
+	for (int i = 0; i < CAR_NUM; i++) {
+		car_data[i] = obj[i];
+	}
+}
+
+<<<<<<< HEAD
 //void CHARACTER::update_map_obj(CAR data[CAR_NUM]){
 //
 //}
+=======
+bool CHARACTER::check_itemkey(int input){
+	if (input == key_item) {
+		return true;
+	}
+	else {
+		return false;
+	}	
+}
+>>>>>>> b21144224a4cc8c3a1f5221a7c987ae1921f23d1
+
 
 int CHARACTER::use_item(){
 	//======= 디버그 필요 ===========
@@ -462,6 +527,10 @@ void CHARACTER::hit_item(int input){
 	}
 }
 
+void CHARACTER::get_item(int input){
+	item = input;
+}
+
 void CHARACTER::KeySetting(unsigned char front, unsigned char back, unsigned char right, unsigned char left){
 	key[KEY_FRONT] = front;
 	key[KEY_BACK] = back;	
@@ -477,4 +546,8 @@ void CHARACTER::SetBodyColor(int R, int G, int B) {
 	body_color[0] = R;
 	body_color[1] = G;
 	body_color[2] = B;
+}
+
+void CHARACTER::Setlocaiton(int x, int y){
+	location = { x*CUBE_SIZE,y*CUBE_SIZE };
 }

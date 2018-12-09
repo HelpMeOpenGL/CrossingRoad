@@ -30,7 +30,8 @@ private:
 	POINT location;
 	int dir;
 	int body_color[3];
-
+	CAR car_data[CAR_NUM];
+	POINT other_location;
 
 	bool jump_b;
 	int jump_timer;
@@ -76,17 +77,19 @@ public:
 	void load_map(int(*input)[MAP_SIZE_Y]);
 
 	POINT get_location();
-	void push_crush_check(int);
+	void load_location(POINT);
 
-	void update_map_obj(CAR);
-	
+	void update_map_obj(CAR*);
+
+	bool check_itemkey(int);
 
 	int use_item();
 	void hit_item(int);
+	void get_item(int);
 	//키보드 키 세팅
 	void KeySetting(unsigned char, unsigned char, unsigned char, unsigned char);
 	void keySetting_item(unsigned char);
 	void SetBodyColor(int, int, int);
-
+	void Setlocaiton(int, int);
 };
 
