@@ -44,6 +44,7 @@ void CHARACTER::init(){
 	move_tmp = { 0,0 };
 	moveTmp = 0;
 	other_location = { 0,0 };
+	dead = false; // 살아있는거
 }
 
 void CHARACTER::reset(){
@@ -79,6 +80,34 @@ void CHARACTER::draw(){
 			//다리그리기
 			break;
 		}
+		glPushMatrix(); {			
+			switch (item) {
+			case 1:
+				glTranslated(0, CUBE_SIZE*1.5 , 0);
+				glPushMatrix(); {
+					glScaled(2, 2, 1);
+					glColor3ub(250, 237, 125);
+					glutSolidCube(CUBE_SIZE / 5);
+				}glPopMatrix();
+				glPushMatrix(); {
+					glTranslated(0, CUBE_SIZE / 5, 0);
+					glColor3ub(234, 234, 234);
+					glScaled(1, 1.5, 1);
+					glutSolidTorus(CUBE_SIZE / 8 - 8, CUBE_SIZE / 8, 4, 8);
+				}glPopMatrix();
+				break;
+			case 2:
+				glTranslated(0, CUBE_SIZE*1.5, 0);
+				glPushMatrix(); {
+					glColor3ub(234, 234, 234);
+					glRotated(180, 0, 1, 0);
+					glutSolidCone(CUBE_SIZE / 4, CUBE_SIZE / 2, 8, 8);
+				}glPopMatrix();
+
+				break;
+			}
+			
+		}glPopMatrix();
 		
 	}glPopMatrix();
 }
@@ -199,6 +228,9 @@ void CHARACTER::keyboard(unsigned char input){
 		if (abs(other_location.x - location.x)+10 < CUBE_SIZE && abs(other_location.y - (location.y + CUBE_SIZE)) + 10 < CUBE_SIZE) {
 			return;
 		}
+		if ((input + location.y) > 300) {
+			return;
+		}
 		call_move();
 		
 	}
@@ -241,7 +273,7 @@ void CHARACTER::keyboard(unsigned char input){
 		if (abs(other_location.x - (location.x - CUBE_SIZE)) + 10 < CUBE_SIZE && abs(other_location.y - location.y) + 10 < CUBE_SIZE) {
 			return;
 		}
-		if (location.x / CUBE_SIZE < -7) {
+		if (location.x / CUBE_SIZE < -6) {
 			return;
 		}
 
@@ -264,7 +296,7 @@ void CHARACTER::keyboard(unsigned char input){
 		if (abs(other_location.x - (location.x + CUBE_SIZE)) + 10 < CUBE_SIZE && abs(other_location.y - location.y) + 10 < CUBE_SIZE) {
 			return;
 		}
-		if (location.x / CUBE_SIZE > 7) {
+		if (location.x / CUBE_SIZE > 6) {
 			return;
 		}
 
@@ -555,5 +587,11 @@ void CHARACTER::Setlocaiton(int x, int y){
 }
 
 void CHARACTER::load_Camera(float input){
-	if()
+	if ((input+location.y) < -350) {
+		dead = true;
+	}
+}
+
+bool CHARACTER::get_life(){
+	return dead;
 }

@@ -42,6 +42,7 @@ private:
 	POINT move_tmp;//이거는 이동하는 크기 저장
 	double moveTmp;//0~1까지 메소드 내에서 쓰임
 
+	bool dead;
 
 
 	float idle_LR_T;
@@ -92,5 +93,6 @@ public:
 	void SetBodyColor(int, int, int);
 	void Setlocaiton(int, int);
 	void load_Camera(float);
+	bool get_life();
 };
 
