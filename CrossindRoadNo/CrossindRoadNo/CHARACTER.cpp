@@ -273,7 +273,7 @@ void CHARACTER::draw_body() {
 		glPushMatrix(); {//¸öÅë
 			glColor3ub(body_color[0], body_color[1], body_color[2]);
 			glTranslatef(0, 35, 0);
-			glScalef(0.9f, 0.6f, 0.9f);
+			glScalef(0.9f, 0.5f, 0.9f);
 			glutSolidCube(CUBE_SIZE);
 			glColor3f(0, 0, 0);
 		}glPopMatrix();

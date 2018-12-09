@@ -23,7 +23,7 @@ BITMAPINFO *info; // 비트맵 헤더 저장할 변수
 GLuint textures[6];
 //============= 맵 =====================
 int MAP[MAP_SIZE_X][MAP_SIZE_Y];
-int cameramove = 0;
+float cameramove = 5000;
 
 
 //============= 캐릭터 =================
@@ -236,99 +236,102 @@ GLvoid drawScene(GLvoid)
 	//	}
 	//	glEnd();
 	//}glPopMatrix();
-
-	//맵 잘찍히나 테스트
 	glPushMatrix(); {
-		glRotated(-90, 1, 0, 0);
-		glRotated(90, 0, 1, 0);
-		//맵 숫자
-		//0_땅 1_도로 2_벽 3_물 4_물거품(물 뽀글뽀글) 5_나무 6_돌
-		for (int j = 0; j < MAP_SIZE_Y; j++) {
-			for (int i = 0; i < MAP_SIZE_X; i++) {
-				switch (MAP[i][j])
-				{
-				case 0:
-					glPushMatrix(); {
-						glColor3ub(162, 206, 50);
-						glBegin(GL_QUADS);
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * j);
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * (j + 1));
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * (j + 1));
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * j);
-						glEnd();
-					}glPopMatrix();
-					break;
-				case 1://도로
-					glPushMatrix(); {
-						glColor3ub(132, 132, 132);
-						glBegin(GL_QUADS);
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * j);
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * (j + 1));
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * (j + 1));
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * j);
-						glEnd();
-					}glPopMatrix();
-					car[j].y = (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * i;
-					break;
-				case 2://벽
-					glPushMatrix(); {
-						glColor3ub(152, 186, 50);
-						glBegin(GL_QUADS);
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * j);
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * (j + 1));
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * (j + 1));
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * j);
-						glEnd();
-					}glPopMatrix();
-					break;
-				case 3:
-					glPushMatrix(); {
-						glColor3ub(50, 162, 206);
-						glBegin(GL_QUADS);
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * j);
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * (j + 1));
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * (j + 1));
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * j);
-						glEnd();
-						glBegin(GL_QUADS);
-						glEnd();
-					}glPopMatrix();
-					break;
-				case 4://물거품
-					glPushMatrix(); {
-						glColor3ub(232, 232, 232);
-						glBegin(GL_QUADS);
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * j);
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * (j + 1));
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * (j + 1));
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * j);
-						glEnd();
-						glBegin(GL_QUADS);
-						glEnd();
-					}glPopMatrix();
-					break;
-				case 5:
+		glRotatef(-30, 1, 0, 0);
+		glTranslatef(0, cameramove, 0);
+		//맵 잘찍히나 테스트
+		glPushMatrix(); {
+			glRotated(-90, 1, 0, 0);
+			glRotated(90, 0, 1, 0);
+			//맵 숫자
+			//0_땅 1_도로 2_벽 3_물 4_물거품(물 뽀글뽀글) 5_나무 6_돌
+			for (int j = 0; j < MAP_SIZE_Y; j++) {
+				for (int i = 0; i < MAP_SIZE_X; i++) {
+					switch (MAP[i][j])
+					{
+					case 0:
+						glPushMatrix(); {
+							glColor3ub(162, 206, 50);
+							glBegin(GL_QUADS);
+							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * j);
+							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * (j + 1));
+							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * (j + 1));
+							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * j);
+							glEnd();
+						}glPopMatrix();
+						break;
+					case 1://도로
+						glPushMatrix(); {
+							glColor3ub(132, 132, 132);
+							glBegin(GL_QUADS);
+							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * j);
+							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * (j + 1));
+							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * (j + 1));
+							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * j);
+							glEnd();
+						}glPopMatrix();
+						car[j].y = (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * j;
+						break;
+					case 2://벽
+						glPushMatrix(); {
+							glColor3ub(152, 186, 50);
+							glBegin(GL_QUADS);
+							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * j);
+							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * (j + 1));
+							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * (j + 1));
+							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * j);
+							glEnd();
+						}glPopMatrix();
+						break;
+					case 3:
+						glPushMatrix(); {
+							glColor3ub(50, 162, 206);
+							glBegin(GL_QUADS);
+							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * j);
+							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * (j + 1));
+							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * (j + 1));
+							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * j);
+							glEnd();
+							glBegin(GL_QUADS);
+							glEnd();
+						}glPopMatrix();
+						break;
+					case 4://물거품
+						glPushMatrix(); {
+							glColor3ub(232, 232, 232);
+							glBegin(GL_QUADS);
+							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * j);
+							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * (j + 1));
+							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * (j + 1));
+							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * j);
+							glEnd();
+							glBegin(GL_QUADS);
+							glEnd();
+						}glPopMatrix();
+						break;
+					case 5:
 
-					break;
-				default:
-					break;
+						break;
+					default:
+						break;
+					}
 				}
+			}
+		}glPopMatrix();
+		character1.draw();
+		character2.draw();
+
+		//자동차그리기
+		for (int i = 0; i < CAR_NUM; i++) {
+			if (car[i].go == true) {
+				glPushMatrix(); {
+					glTranslatef(car[i].x, car[i].y, 0);
+					glColor3ub(188, 123, 50);
+					glutSolidCube(CUBE_SIZE);
+				}glPopMatrix();
 			}
 		}
 	}glPopMatrix();
-	character1.draw();
-	character2.draw();
-
-	//자동차그리기
-	for (int i = 0; i < CAR_NUM; i++) {
-		if (car[i].go == true) {
-			glPushMatrix(); {
-				glTranslatef(car[i].x, car[i].y, 0);
-				glColor3ub(188, 123, 50);
-				glutSolidCube(CUBE_SIZE);
-			}glPopMatrix();
-		}
-	}
 	glutSwapBuffers(); // 화면에 출력하기
 }
 
@@ -338,7 +341,7 @@ GLvoid Reshape(int w, int h)
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluPerspective(60, (float)1920 / 1080, 1.0, 2000);
-	glTranslatef(0, 0, -500);
+	glTranslatef(0, 0, -700);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 }
@@ -346,7 +349,8 @@ GLvoid Reshape(int w, int h)
 void Timer(int value) {
 	character1.update();
 	character2.update();
-
+	cameramove-=0.5;
+	
 	//자동차마다 타이머두자
 	for (int i = 0; i < CAR_NUM; i++) {
 		if (car[i].y != 0) {
@@ -440,11 +444,11 @@ void global_init() {
 	//2 :: R = 30 G = 126 B = 158
 	character1.KeySetting(GLUT_KEY_UP, GLUT_KEY_DOWN, GLUT_KEY_RIGHT, GLUT_KEY_LEFT);
 	character1.SetBodyColor(232, 199, 199);
-	character1.Setlocaiton(1,0);
+	character1.Setlocaiton(1,-48);
 	character1.keySetting_item(GLUT_KEY_SHIFT_R);
 	character2.KeySetting('s', 'x', 'c', 'z');
 	character2.SetBodyColor(30, 126, 158);
-	character2.Setlocaiton(0, 0);
+	character2.Setlocaiton(0, -48);
 	character2.keySetting_item(GLUT_KEY_SHIFT_L);
 }
 
