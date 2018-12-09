@@ -19,6 +19,7 @@ void CHARACTER::init(){
 	key[KEY_BACK] = 's';
 	key[KEY_LEFT] = 'a';
 	key[KEY_RIGHT] = 'd';
+	key_item = GLUT_KEY_SHIFT_R;
 	item = 0;
 	type = 0;
 	state = STATE_IDLE;
@@ -407,6 +408,21 @@ void CHARACTER::load_map(int (*input)[MAP_SIZE_Y]){
 	}
 }
 
+POINT CHARACTER::get_location(){
+	return location;
+}
+
+void CHARACTER::push_crush_check(int CrushType){
+	switch (CrushType) {
+
+	}
+
+}
+
+void CHARACTER::update_map_obj(CAR data[CAR_NUM]){
+
+}
+
 int CHARACTER::use_item(){
 	//======= 디버그 필요 ===========
 	if (item == ITEM_MOVE) {
@@ -451,6 +467,10 @@ void CHARACTER::KeySetting(unsigned char front, unsigned char back, unsigned cha
 	key[KEY_BACK] = back;	
 	key[KEY_RIGHT] = right;
 	key[KEY_LEFT] = left;
+}
+
+void CHARACTER::keySetting_item(unsigned char input){
+	key_item = input;
 }
 
 void CHARACTER::SetBodyColor(int R, int G, int B) {

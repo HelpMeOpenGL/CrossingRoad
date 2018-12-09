@@ -13,17 +13,12 @@
 #define ITEM_FOG 3 //안개
 
 
-struct S_DUST {
-	int location[3];
-	int speed[3];
-	int size;
-};
-
 class CHARACTER{
 private:
 	int local_time;
 	int type;
 	int key[4];
+	int key_item;
 	int state;
 	bool time_ping;
 	int map[MAP_SIZE_X][MAP_SIZE_Y];
@@ -80,12 +75,17 @@ public:
 
 	void load_map(int(*input)[MAP_SIZE_Y]);
 
+	POINT get_location();
+	void push_crush_check(int);
+
+	void update_map_obj(CAR);
 	
 
 	int use_item();
 	void hit_item(int);
 	//키보드 키 세팅
 	void KeySetting(unsigned char, unsigned char, unsigned char, unsigned char);
+	void keySetting_item(unsigned char);
 	void SetBodyColor(int, int, int);
 
 };
