@@ -8,6 +8,10 @@
 #define STATE_MOVE 1
 #define STATE_DAMAGE 2
 
+#define ITEM_STURN 1 //스턴
+#define ITEM_MOVE 2 //텔레포트
+#define ITEM_FOG 3 //안개
+
 class CHARACTER{
 
 private:
@@ -15,7 +19,13 @@ private:
 	int type;
 	int key[4];
 	int state;
-	bool timerPingPong;
+	bool time_ping;
+	int map[MAP_SIZE_X][MAP_SIZE_Y];
+	int item;
+	bool key_lock;
+	int item_timer;
+	bool b_item_fog;
+	POINT location;
 public:
 	CHARACTER();
 	~CHARACTER();
@@ -32,6 +42,11 @@ public:
 	void draw_leg();
 	void animation();
 
+
+	void load_map(int(*input)[MAP_SIZE_Y]);
+
+	int use_item();
+	void hit_item(int);
 	//키보드 키 세팅
 	void KeySetting(unsigned char, unsigned char, unsigned char, unsigned char);
 	
