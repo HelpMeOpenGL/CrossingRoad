@@ -84,7 +84,6 @@ void CHARACTER::update(){
 			item_timer = 0;
 		}
 	}
-<<<<<<< HEAD
 	jump_timer++;
 	if (jump_timer <= 30) {
 		jump_height++;
@@ -96,7 +95,6 @@ void CHARACTER::update(){
 		jump_timer = 0;
 	}
 
-=======
 	switch (state) {
 	case STATE_IDLE:
 		idle_update();
@@ -104,8 +102,6 @@ void CHARACTER::update(){
 	default:
 		break;
 	}
-	
->>>>>>> eaf0783d1ccb1dd07e127024a709816a6b054288
 }
 
 void CHARACTER::keyboard(unsigned char input){

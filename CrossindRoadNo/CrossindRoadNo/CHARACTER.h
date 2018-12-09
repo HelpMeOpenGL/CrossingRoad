@@ -36,16 +36,13 @@ private:
 	POINT location;
 	int dir;
 	int body_color[3];
-<<<<<<< HEAD
 	int jump_timer;
 	int jump_height;
 
-=======
 	float idle_LR_T;
 	float idle_UD_T;
 	bool idle_LR;
 	bool idle_UD;
->>>>>>> eaf0783d1ccb1dd07e127024a709816a6b054288
 public:
 	CHARACTER();
 	~CHARACTER();
