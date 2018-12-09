@@ -241,6 +241,9 @@ void CHARACTER::keyboard(unsigned char input){
 		if (abs(other_location.x - (location.x - CUBE_SIZE)) + 10 < CUBE_SIZE && abs(other_location.y - location.y) + 10 < CUBE_SIZE) {
 			return;
 		}
+		if (location.x / CUBE_SIZE < -7) {
+			return;
+		}
 
 		call_move();
 		
@@ -258,8 +261,10 @@ void CHARACTER::keyboard(unsigned char input){
 		if (map[(int)location.x / CUBE_SIZE + 1][(int)location.y / CUBE_SIZE] == 6) {
 			return;
 		}
-
 		if (abs(other_location.x - (location.x + CUBE_SIZE)) + 10 < CUBE_SIZE && abs(other_location.y - location.y) + 10 < CUBE_SIZE) {
+			return;
+		}
+		if (location.x / CUBE_SIZE > 7) {
 			return;
 		}
 
@@ -472,11 +477,6 @@ void CHARACTER::update_map_obj(CAR *obj){
 	}
 }
 
-<<<<<<< HEAD
-//void CHARACTER::update_map_obj(CAR data[CAR_NUM]){
-//
-//}
-=======
 bool CHARACTER::check_itemkey(int input){
 	if (input == key_item) {
 		return true;
@@ -485,17 +485,19 @@ bool CHARACTER::check_itemkey(int input){
 		return false;
 	}	
 }
->>>>>>> b21144224a4cc8c3a1f5221a7c987ae1921f23d1
-
-
 int CHARACTER::use_item(){
 	//======= 디버그 필요 ===========
-	if (item == ITEM_MOVE) {
-		int tmp = rand() % 7 + 1;
-		location.y += tmp;
-		while (map[location.x][location.y] < 1) {
-			location.y--;
-		}	
+	if (item == ITEM_MOVE) {		
+		while (true) {
+			int tmp = rand() % 3 + 1;
+			if ((map[location.x / CUBE_SIZE][location.y / CUBE_SIZE + tmp] == 1 ||
+				map[location.x / CUBE_SIZE][location.y / CUBE_SIZE + tmp] == 0) &&
+				!(abs(other_location.x - (location.x + CUBE_SIZE)) + 10 < CUBE_SIZE && abs(other_location.y - location.y) + 10 < CUBE_SIZE)) {
+				location.y += tmp * CUBE_SIZE;
+				item = 0;
+				return 0;
+			}
+		}		
 	}
 	//==================================
 
@@ -550,4 +552,8 @@ void CHARACTER::SetBodyColor(int R, int G, int B) {
 
 void CHARACTER::Setlocaiton(int x, int y){
 	location = { x*CUBE_SIZE,y*CUBE_SIZE };
+}
+
+void CHARACTER::load_Camera(float input){
+	if()
 }
