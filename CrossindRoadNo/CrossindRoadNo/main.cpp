@@ -346,12 +346,7 @@ GLvoid Reshape(int w, int h)
 void Timer(int value) {
 	character1.update();
 	character2.update();
-<<<<<<< HEAD
-=======
 
-	car[0].go = true;
-	
->>>>>>> b21144224a4cc8c3a1f5221a7c987ae1921f23d1
 	//자동차마다 타이머두자
 	for (int i = 0; i < CAR_NUM; i++) {
 		if (car[i].y != 0) {
@@ -363,9 +358,6 @@ void Timer(int value) {
 		//if (car[i].go == true)
 			//car[i].x++;
 	}
-	glutPostRedisplay();
-	glutTimerFunc(10, Timer, 1);
-	
 	character1.update_map_obj(car);
 	character2.update_map_obj(car);
 

@@ -472,11 +472,9 @@ void CHARACTER::update_map_obj(CAR *obj){
 	}
 }
 
-<<<<<<< HEAD
 //void CHARACTER::update_map_obj(CAR data[CAR_NUM]){
 //
 //}
-=======
 bool CHARACTER::check_itemkey(int input){
 	if (input == key_item) {
 		return true;
@@ -485,9 +483,6 @@ bool CHARACTER::check_itemkey(int input){
 		return false;
 	}	
 }
->>>>>>> b21144224a4cc8c3a1f5221a7c987ae1921f23d1
-
-
 int CHARACTER::use_item(){
 	//======= 디버그 필요 ===========
 	if (item == ITEM_MOVE) {
