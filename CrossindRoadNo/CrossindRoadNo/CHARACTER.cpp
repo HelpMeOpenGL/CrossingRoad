@@ -32,6 +32,11 @@ void CHARACTER::init(){
 	body_color[2] = 199;
 	//1 :: R = 232 G = 199 B = 199
 	//2 :: R = 30 G = 120 B = 230
+	idle_UD_T = 0;
+	idle_LR_T = 0;
+	idle_LR = true;
+	idle_UD = true;
+
 }
 
 void CHARACTER::reset(){
@@ -51,8 +56,14 @@ void CHARACTER::draw(){
 		if (dir == 4) {
 			glRotatef(-90, 0, 1, 0);
 		}
-		draw_body();
-		draw_leg();
+		switch (state) {
+		case STATE_IDLE:
+			idle_draw();
+			break;
+		default:
+			break;
+		}
+		
 	}glPopMatrix();
 }
 
@@ -73,6 +84,7 @@ void CHARACTER::update(){
 			item_timer = 0;
 		}
 	}
+<<<<<<< HEAD
 	jump_timer++;
 	if (jump_timer <= 30) {
 		jump_height++;
@@ -84,6 +96,16 @@ void CHARACTER::update(){
 		jump_timer = 0;
 	}
 
+=======
+	switch (state) {
+	case STATE_IDLE:
+		idle_update();
+		break;
+	default:
+		break;
+	}
+	
+>>>>>>> eaf0783d1ccb1dd07e127024a709816a6b054288
 }
 
 void CHARACTER::keyboard(unsigned char input){
@@ -194,6 +216,52 @@ void CHARACTER::animation(){
 	
 
 
+
+}
+
+void CHARACTER::idle_draw(){
+	glPushMatrix(); {
+		glPushMatrix(); {
+			glRotated(idle_LR_T, 0, 0, 1);
+			glTranslated(0, idle_UD_T + 3, 0);
+			draw_body();
+		}glPopMatrix();
+		draw_leg();
+	}glPopMatrix();	
+}
+
+void CHARACTER::idle_update(){
+	if (idle_UD) {
+		idle_UD_T += 0.5;
+		if (idle_UD_T > (CUBE_SIZE / 30)) {
+			idle_UD = false;
+		}
+	}
+	else {
+		idle_UD_T -= 0.5;
+		if (idle_UD_T < -(CUBE_SIZE / 30)) {
+			idle_UD = true;
+		}
+	}
+	if (idle_LR) {
+		idle_LR_T += 0.1;
+		if (idle_LR_T > 10) {
+			idle_LR = false;
+		}
+	}
+	else {
+		idle_LR_T -= 0.1;
+		if (idle_LR_T < -10) {
+			idle_LR = true;
+		}
+	}
+}
+
+void CHARACTER::jump_draw(){
+
+}
+
+void CHARACTER::jump_update(){
 
 }
 

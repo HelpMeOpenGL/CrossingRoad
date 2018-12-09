@@ -12,6 +12,15 @@
 #define ITEM_MOVE 2 //텔레포트
 #define ITEM_FOG 3 //안개
 
+struct DIRECTION {
+	double x, y, z;
+};
+
+struct S_DUST {
+	DIRECTION location;
+	int speed;
+};
+
 class CHARACTER{
 private:
 	int local_time;
@@ -27,9 +36,16 @@ private:
 	POINT location;
 	int dir;
 	int body_color[3];
+<<<<<<< HEAD
 	int jump_timer;
 	int jump_height;
 
+=======
+	float idle_LR_T;
+	float idle_UD_T;
+	bool idle_LR;
+	bool idle_UD;
+>>>>>>> eaf0783d1ccb1dd07e127024a709816a6b054288
 public:
 	CHARACTER();
 	~CHARACTER();
@@ -45,7 +61,12 @@ public:
 	void draw_body();
 	void draw_leg();
 	void animation();
+	
 
+	void idle_draw();
+	void idle_update();
+	void jump_draw();
+	void jump_update();
 
 	void load_map(int(*input)[MAP_SIZE_Y]);
 
