@@ -30,4 +30,10 @@
 #define DIRECTION_RIGHT 20002
 #define DIRECTION_LEFT 20003
 
+struct CAR {
+	int x = 0;
+	int type;
+	int timer;
+	bool go = false;
+};
 

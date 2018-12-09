@@ -28,13 +28,9 @@ int cameramove = 0;
 
 //============= 캐릭터 =================
 CHARACTER character1;
+CHARACTER character2;
 
-struct CAR {
-	int x= -(CUBE_SIZE*MAP_SIZE_X / 4);
-	int type;
-	int timer;
-	bool go = false;
-}car[CAR_NUM];
+CAR car[CAR_NUM];
 
 int main(int argc, char *argv[]){
 	global_init();
@@ -317,6 +313,7 @@ GLvoid drawScene(GLvoid)
 		}
 	}glPopMatrix();
 	character1.draw();
+	character2.draw();
 
 	//자동차그리기
 	for (int i = 0; i < CAR_NUM; i++) {
@@ -344,6 +341,8 @@ GLvoid Reshape(int w, int h)
 
 void Timer(int value) {
 	character1.update();
+	character2.update();
+
 	car[0].go = true;
 	glutPostRedisplay();
 	glutTimerFunc(10, Timer, 1);
@@ -381,7 +380,7 @@ void Keyboard(unsigned char key, int x, int y) {
 	case ',':
 		glTranslatef(0, -CUBE_SIZE, 0);
 		break;
-	case 'x':
+	/*case 'x':
 		glRotatef(5, 1, 0, 0);
 		break;
 	case 'X':
@@ -397,30 +396,32 @@ void Keyboard(unsigned char key, int x, int y) {
 		glRotatef(5, 0, 0, 1);
 		break;
 	case 'Z':
-		glRotatef(-5, 0, 0, 1);
+		glRotatef(-5, 0, 0, 1);*/
 	case '1':
 		character1.hit_item(1);//character1.hit_item(character1.use_item()); <<원래는 이런느낌의 코드
+		character2.hit_item(1);//character1.hit_item(character1.use_item()); <<원래는 이런느낌의 코드
 		break;
 	default:
 		break;
 	}
 	character1.keyboard(key);
+	character2.keyboard(key);
 }
 
 void SpecialKeyboard(int key, int x, int y) {
-	
 	character1.keyboard(key);
+	character2.keyboard(key);
 }
+
 void global_init() {
 	LoadFile();
 
-
 	//1 :: R = 232 G = 199 B = 199
-	//2 :: R = 30 G = 120 B = 230
+	//2 :: R = 30 G = 126 B = 158
 	character1.KeySetting(GLUT_KEY_UP, GLUT_KEY_DOWN, GLUT_KEY_RIGHT, GLUT_KEY_LEFT);
 	character1.SetBodyColor(232, 199, 199);
-
-
+	character2.KeySetting('s', 'x', 'c', 'z');
+	character2.SetBodyColor(30, 126, 158);
 }
 
 void Draw_Barrier(int Type, int x, int y) {
