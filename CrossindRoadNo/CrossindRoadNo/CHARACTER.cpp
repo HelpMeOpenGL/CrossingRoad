@@ -215,38 +215,25 @@ void CHARACTER::keyboard(unsigned char input){
 		std::cout << "FRONT" << std::endl;
 		//location.y += 1 * CUBE_SIZE;
 		call_jump();
-		dir = 1;
+		dir = 1;		
 		
-		//객체충돌
-		if (map[(int)location.x / CUBE_SIZE][(int)location.y / CUBE_SIZE+1] == 5) {
-			return;
-		}
-		if (map[(int)location.x / CUBE_SIZE][(int)location.y / CUBE_SIZE + 1] == 6) {
-			return;
-		}
 		//상대 플레이어 충돌체크
 		if (abs(other_location.x - location.x)+10 < CUBE_SIZE && abs(other_location.y - (location.y + CUBE_SIZE)) + 10 < CUBE_SIZE) {
+			std::cout << "231" << std::endl;
 			return;
 		}
 		if ((input + location.y) > 300) {
+			std::cout << "235" << std::endl;
 			return;
 		}
-		call_move();
-		
+		call_move();		
 	}
+
 	if (input == key[KEY_BACK]) {
 		std::cout << "BACK" << std::endl;
 		//location.y -= 1 * CUBE_SIZE;
 		dir = 2; 
 		call_jump();
-
-		//객체충돌
-		if (map[(int)location.x / CUBE_SIZE][(int)location.y / CUBE_SIZE - 1] == 5) {
-			return;
-		}
-		if (map[(int)location.x / CUBE_SIZE][(int)location.y / CUBE_SIZE - 1] == 6) {
-			return;
-		}
 
 		//상대 플레이어 충돌체크
 		if (abs(other_location.x - location.x) + 10 < CUBE_SIZE && abs(other_location.y - (location.y - CUBE_SIZE)) + 10 < CUBE_SIZE) {
@@ -255,24 +242,19 @@ void CHARACTER::keyboard(unsigned char input){
 		call_move();
 		
 	}
+
 	if (input == key[KEY_LEFT]) {
 		std::cout << "LEFT" << std::endl;
 		//location.x -= 1 * CUBE_SIZE;
 		dir = 3;
 		call_jump();
 
-		//객체충돌
-		if (map[(int)location.x / CUBE_SIZE - 1][(int)location.y / CUBE_SIZE] == 5) {
-			return;
-		}
-		if (map[(int)location.x / CUBE_SIZE - 1][(int)location.y / CUBE_SIZE] == 6) {
-			return;
-		}
-
+		
 		//상대 플레이어 충돌체크
 		if (abs(other_location.x - (location.x - CUBE_SIZE)) + 10 < CUBE_SIZE && abs(other_location.y - location.y) + 10 < CUBE_SIZE) {
 			return;
 		}
+
 		if (location.x / CUBE_SIZE < -6) {
 			return;
 		}
@@ -280,19 +262,14 @@ void CHARACTER::keyboard(unsigned char input){
 		call_move();
 		
 	}
+
 	if (input == key[KEY_RIGHT]) {
 		std::cout << "RIGHT" << std::endl;
 		//location.x += 1 * CUBE_SIZE;
 		dir = 4;
 		call_jump();
 
-		//객체충돌
-		if (map[(int)location.x / CUBE_SIZE + 1][(int)location.y / CUBE_SIZE] == 5) {
-			return;
-		}
-		if (map[(int)location.x / CUBE_SIZE + 1][(int)location.y / CUBE_SIZE] == 6) {
-			return;
-		}
+		
 		if (abs(other_location.x - (location.x + CUBE_SIZE)) + 10 < CUBE_SIZE && abs(other_location.y - location.y) + 10 < CUBE_SIZE) {
 			return;
 		}
@@ -586,11 +563,7 @@ void CHARACTER::Setlocaiton(int x, int y){
 	location = { x*CUBE_SIZE,y*CUBE_SIZE };
 }
 
-<<<<<<< HEAD
-//void CHARACTER::load_Camera(float input){
-//	if()
-//}
-=======
+
 void CHARACTER::load_Camera(float input){
 	if ((input+location.y) < -350) {
 		dead = true;
@@ -600,4 +573,4 @@ void CHARACTER::load_Camera(float input){
 bool CHARACTER::get_life(){
 	return dead;
 }
->>>>>>> 7f823178322bc098fb6c828dee81cefea5381ebe
+
