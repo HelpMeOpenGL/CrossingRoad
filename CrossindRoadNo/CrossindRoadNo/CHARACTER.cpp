@@ -554,6 +554,6 @@ void CHARACTER::Setlocaiton(int x, int y){
 	location = { x*CUBE_SIZE,y*CUBE_SIZE };
 }
 
-void CHARACTER::load_Camera(float input){
-	if()
-}
+//void CHARACTER::load_Camera(float input){
+//	if()
+//}

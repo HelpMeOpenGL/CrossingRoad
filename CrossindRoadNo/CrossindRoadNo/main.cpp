@@ -147,7 +147,6 @@ GLvoid drawScene(GLvoid)
 	glEnable(GL_DEPTH_TEST);
 	//큐브맵
 	//텍스처불러오기
-<<<<<<< HEAD
 	//glGenTextures(6, textures);
 	//glBindTexture(GL_TEXTURE_2D, textures[0]);
 	//pBytes = LoadDIBitmap("skybox_top.bmp", &info);
@@ -237,93 +236,91 @@ GLvoid drawScene(GLvoid)
 	//	}
 	//	glEnd();
 	//}glPopMatrix();
-=======
-	glBindTexture(GL_TEXTURE_2D, textures[0]);
-	glTexImage2D(GL_TEXTURE_2D, 0, 3, 256, 256, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes[0]);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, GL_MODULATE);
+	//glBindTexture(GL_TEXTURE_2D, textures[0]);
+	//glTexImage2D(GL_TEXTURE_2D, 0, 3, 256, 256, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes[0]);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	//glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, GL_MODULATE);
 
-	glBindTexture(GL_TEXTURE_2D, textures[1]);
-	glTexImage2D(GL_TEXTURE_2D, 0, 3, 256, 256, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes[1]);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, GL_MODULATE);
+	//glBindTexture(GL_TEXTURE_2D, textures[1]);
+	//glTexImage2D(GL_TEXTURE_2D, 0, 3, 256, 256, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes[1]);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	//glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, GL_MODULATE);
 
-	glBindTexture(GL_TEXTURE_2D, textures[2]);
-	glTexImage2D(GL_TEXTURE_2D, 0, 3, 256, 256, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes[2]);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, GL_MODULATE);
+	//glBindTexture(GL_TEXTURE_2D, textures[2]);
+	//glTexImage2D(GL_TEXTURE_2D, 0, 3, 256, 256, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes[2]);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	//glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, GL_MODULATE);
 
-	glBindTexture(GL_TEXTURE_2D, textures[3]);
-	
-	glTexImage2D(GL_TEXTURE_2D, 0, 3, 256, 256, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes[3]);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, GL_MODULATE);
+	//glBindTexture(GL_TEXTURE_2D, textures[3]);
+	//
+	//glTexImage2D(GL_TEXTURE_2D, 0, 3, 256, 256, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes[3]);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	//glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, GL_MODULATE);
 
-	glBindTexture(GL_TEXTURE_2D, textures[4]);	
-	glTexImage2D(GL_TEXTURE_2D, 0, 3, 256, 256, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes[4]);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, GL_MODULATE);
+	//glBindTexture(GL_TEXTURE_2D, textures[4]);	
+	//glTexImage2D(GL_TEXTURE_2D, 0, 3, 256, 256, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes[4]);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	//glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, GL_MODULATE);
 
-	glBindTexture(GL_TEXTURE_2D, textures[5]);	
-	glTexImage2D(GL_TEXTURE_2D, 0, 3, 256, 256, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes[5]);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, GL_MODULATE);
+	//glBindTexture(GL_TEXTURE_2D, textures[5]);	
+	//glTexImage2D(GL_TEXTURE_2D, 0, 3, 256, 256, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes[5]);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	//glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, GL_MODULATE);
 
-	glEnable(GL_TEXTURE_2D);
-		glBindTexture(GL_TEXTURE_2D, textures[2]);
-		glBegin(GL_QUADS);
-		{
-			glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
-			//앞
-			glTexCoord2f(1, 1);
-			glVertex3f(WORLD_SIZE, WORLD_SIZE, WORLD_SIZE);
-			glTexCoord2f(0, 1);
-			glVertex3f(-WORLD_SIZE, WORLD_SIZE, WORLD_SIZE);
-			glTexCoord2f(0.0, 0.0);
-			glVertex3f(-WORLD_SIZE, WORLD_SIZE, -WORLD_SIZE);
-			glTexCoord2f(1, 0);
-			glVertex3f(WORLD_SIZE, WORLD_SIZE, -WORLD_SIZE);
-		}
-		glEnd();
-	glPushMatrix(); {
-		glRotatef(90, 0, 1, 0);
-		glBindTexture(GL_TEXTURE_2D, textures[1]);
-		glBegin(GL_QUADS);
-		{
-			//왼쪽
-			glTexCoord2f(1, 1);
-			glVertex3f(-WORLD_SIZE, WORLD_SIZE, -WORLD_SIZE);
-			glTexCoord2f(0, 1);
-			glVertex3f(-WORLD_SIZE, WORLD_SIZE, WORLD_SIZE);
-			glTexCoord2f(0, 0);
-			glVertex3f(-WORLD_SIZE, -WORLD_SIZE, WORLD_SIZE);
-			glTexCoord2f(1, 0);
-			glVertex3f(-WORLD_SIZE, -WORLD_SIZE, -WORLD_SIZE);
+	//glEnable(GL_TEXTURE_2D);
+	//	glBindTexture(GL_TEXTURE_2D, textures[2]);
+	//	glBegin(GL_QUADS);
+	//	{
+	//		glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
+	//		//앞
+	//		glTexCoord2f(1, 1);
+	//		glVertex3f(WORLD_SIZE, WORLD_SIZE, WORLD_SIZE);
+	//		glTexCoord2f(0, 1);
+	//		glVertex3f(-WORLD_SIZE, WORLD_SIZE, WORLD_SIZE);
+	//		glTexCoord2f(0.0, 0.0);
+	//		glVertex3f(-WORLD_SIZE, WORLD_SIZE, -WORLD_SIZE);
+	//		glTexCoord2f(1, 0);
+	//		glVertex3f(WORLD_SIZE, WORLD_SIZE, -WORLD_SIZE);
+	//	}
+	//	glEnd();
+	//glPushMatrix(); {
+	//	glRotatef(90, 0, 1, 0);
+	//	glBindTexture(GL_TEXTURE_2D, textures[1]);
+	//	glBegin(GL_QUADS);
+	//	{
+	//		//왼쪽
+	//		glTexCoord2f(1, 1);
+	//		glVertex3f(-WORLD_SIZE, WORLD_SIZE, -WORLD_SIZE);
+	//		glTexCoord2f(0, 1);
+	//		glVertex3f(-WORLD_SIZE, WORLD_SIZE, WORLD_SIZE);
+	//		glTexCoord2f(0, 0);
+	//		glVertex3f(-WORLD_SIZE, -WORLD_SIZE, WORLD_SIZE);
+	//		glTexCoord2f(1, 0);
+	//		glVertex3f(-WORLD_SIZE, -WORLD_SIZE, -WORLD_SIZE);
 
-		}
-		glEnd();
-	}glPopMatrix();
+	//	}
+	//	glEnd();
+	//}glPopMatrix();
 
 	//맵 잘찍히나 테스트
->>>>>>> b1544671509658baa3b71ca2cf1ab167e4559b06
 	glPushMatrix(); {
 		glRotatef(-30, 1, 0, 0);
 		glTranslatef(0, cameramove, 0);
@@ -332,7 +329,7 @@ GLvoid drawScene(GLvoid)
 			glRotated(-90, 1, 0, 0);
 			glRotated(90, 0, 1, 0);
 			//맵 숫자
-			//0_땅 1_도로 2_벽 3_물 4_물거품(물 뽀글뽀글) 5_나무 6_돌
+			//0_땅 1_도로 2_벽 5_나무 6_돌
 			for (int j = 0; j < MAP_SIZE_Y; j++) {
 				for (int i = 0; i < MAP_SIZE_X; i++) {
 					switch (MAP[i][j])
@@ -384,21 +381,73 @@ GLvoid drawScene(GLvoid)
 							glEnd();
 						}glPopMatrix();
 						break;
-					case 4://물거품
+					case 5://나무
 						glPushMatrix(); {
-							glColor3ub(232, 232, 232);
+							glColor3ub(162, 206, 50);
 							glBegin(GL_QUADS);
 							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * j);
 							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * (j + 1));
 							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * (j + 1));
 							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * j);
 							glEnd();
-							glBegin(GL_QUADS);
-							glEnd();
+							glTranslatef((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 8) + CUBE_SIZE / 4 * i, 0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 8) + CUBE_SIZE / 4 * j);
+							glTranslatef((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 8) + CUBE_SIZE / 4 * i, -50, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 8) + CUBE_SIZE / 4 * j);
+							glColor3ub(188, 123, 50);
+							glScalef(0.5, 2, 0.5);
+							glutSolidCube(CUBE_SIZE/2);
+							glColor3ub(0, 86, 0);
+							glScalef(3, 0.3, 3);
+							glTranslatef(0, -25, 0);
+							glutSolidCube(CUBE_SIZE / 2);
+							glColor3ub(0, 126, 0);
+							glTranslatef(0, -25, 0);
+							glScalef(0.9, 1, 0.9);
+							glutSolidCube(CUBE_SIZE / 2);
+							glColor3ub(0, 105, 0);
+							glTranslatef(0, -25, 0);
+							glScalef(0.9, 1, 0.9);
+							glutSolidCube(CUBE_SIZE / 2);
+							glColor3ub(0, 142, 0);
+							glTranslatef(0, -25, 0);
+							glScalef(0.7, 1, 0.7);
+							glutSolidCube(CUBE_SIZE / 2);
+							glColor3ub(0, 122, 0);
+							glTranslatef(0, -25, 0);
+							glScalef(0.7, 1, 0.7);
+							glutSolidCube(CUBE_SIZE / 2);
 						}glPopMatrix();
 						break;
-					case 5:
-
+					case 6://돌
+						glPushMatrix(); {
+							glColor3ub(162, 206, 50);
+							glBegin(GL_QUADS);
+							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * j);
+							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * (j + 1));
+							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * (j + 1));
+							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * j);
+							glEnd();
+							glColor3ub(86, 86, 86);
+							glTranslatef((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 8) + CUBE_SIZE / 4 * i, 0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 8) + CUBE_SIZE / 4 * j);
+							glutSolidCube(50);
+							glTranslatef((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 8) + CUBE_SIZE / 4 * i, -25, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 8) + CUBE_SIZE / 4 * j);
+							glutSolidCube(30);
+						}glPopMatrix();
+						break;
+					case 7://아이템박스
+						glPushMatrix(); {
+							glColor3ub(162, 206, 50);
+							glBegin(GL_QUADS);
+							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * j);
+							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * (j + 1));
+							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * (j + 1));
+							glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE / 2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * j);
+							glEnd();
+							glColor3ub(86, 86, 86);
+							glTranslatef((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 8) + CUBE_SIZE / 4 * i, 0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 8) + CUBE_SIZE / 4 * j);
+							glutSolidCube(50);
+							glTranslatef((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 8) + CUBE_SIZE / 4 * i, -25, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 8) + CUBE_SIZE / 4 * j);
+							glutSolidCube(30);
+						}glPopMatrix();
 						break;
 					default:
 						break;
@@ -437,12 +486,9 @@ GLvoid Reshape(int w, int h)
 void Timer(int value) {
 	character1.update();
 	character2.update();
-<<<<<<< HEAD
 	cameramove-=0.5;
 	
-=======
 	car[0].go = true;
->>>>>>> b1544671509658baa3b71ca2cf1ab167e4559b06
 	//자동차마다 타이머두자
 	for (int i = 0; i < CAR_NUM; i++) {
 		if (car[i].y != 0) {
@@ -495,6 +541,9 @@ void Keyboard(unsigned char key, int x, int y) {
 	case '2':
 		character1.get_item(2);
 		character2.get_item(2);
+		break;
+	case 'y':
+		glRotatef(-5, 1, 0, 0);
 		break;
 	default:
 		break;
