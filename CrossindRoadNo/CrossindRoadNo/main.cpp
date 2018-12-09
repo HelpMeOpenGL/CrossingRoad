@@ -344,14 +344,18 @@ void Timer(int value) {
 	character2.update();
 
 	car[0].go = true;
-	glutPostRedisplay();
-	glutTimerFunc(10, Timer, 1);
+	
 	//자동차마다 타이머두자
 	for (int i = 0; i < CAR_NUM; i++) {
 		if(car[i].go==true)
 		car[i].x++;
 	}
 	
+	character1.update_map_obj(car);
+	character2.update_map_obj(car);
+
+	glutPostRedisplay();
+	glutTimerFunc(10, Timer, 1);
 }
 
 void Mouse(int button, int state, int x, int y) {
@@ -398,19 +402,27 @@ void Keyboard(unsigned char key, int x, int y) {
 	case 'Z':
 		glRotatef(-5, 0, 0, 1);*/
 	case '1':
-		character1.hit_item(1);//character1.hit_item(character1.use_item()); <<원래는 이런느낌의 코드
-		character2.hit_item(1);//character1.hit_item(character1.use_item()); <<원래는 이런느낌의 코드
+		character1.get_item(1);
+		character2.get_item(1);
 		break;
 	default:
 		break;
 	}
+	character1.load_location(character2.get_location());
 	character1.keyboard(key);
+	character2.load_location(character1.get_location());
 	character2.keyboard(key);
 }
 
 void SpecialKeyboard(int key, int x, int y) {
 	character1.keyboard(key);
 	character2.keyboard(key);
+	if (character1.check_itemkey(key)) {
+		character2.hit_item(character1.use_item());
+	}
+	if (character2.check_itemkey(key)) {
+		character1.hit_item(character2.use_item());
+	}
 }
 
 void global_init() {
@@ -420,8 +432,12 @@ void global_init() {
 	//2 :: R = 30 G = 126 B = 158
 	character1.KeySetting(GLUT_KEY_UP, GLUT_KEY_DOWN, GLUT_KEY_RIGHT, GLUT_KEY_LEFT);
 	character1.SetBodyColor(232, 199, 199);
+	character1.Setlocaiton(1,0);
+	character1.keySetting_item(GLUT_KEY_SHIFT_R);
 	character2.KeySetting('s', 'x', 'c', 'z');
 	character2.SetBodyColor(30, 126, 158);
+	character2.Setlocaiton(0, 0);
+	character2.keySetting_item(GLUT_KEY_SHIFT_L);
 }
 
 void Draw_Barrier(int Type, int x, int y) {
