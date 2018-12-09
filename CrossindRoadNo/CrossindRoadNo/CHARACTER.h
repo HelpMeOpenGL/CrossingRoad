@@ -91,5 +91,6 @@ public:
 	void keySetting_item(unsigned char);
 	void SetBodyColor(int, int, int);
 	void Setlocaiton(int, int);
+	void load_Camera(float);
 };
 
