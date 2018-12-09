@@ -16,8 +16,8 @@ void CHARACTER::init(){
 	local_time = 0;
 	//虐技泼 < 肯傈 叼弃飘
 	key[KEY_FRONT] = 'w';
-	key[KEY_BACK] = 'a';
-	key[KEY_LEFT] = 's';
+	key[KEY_BACK] = 's';
+	key[KEY_LEFT] = 'a';
 	key[KEY_RIGHT] = 'd';
 	item = 0;
 	type = 0;
@@ -62,103 +62,122 @@ void CHARACTER::keyboard(unsigned char input){
 	}
 	if (input == key[KEY_FRONT]) {
 		std::cout << "FRONT" << std::endl;
+		location.y += 1 * CUBE_SIZE;
+		dir = 1;
 	}
 	if (input == key[KEY_BACK]) {
 		std::cout << "BACK" << std::endl;
-	}
-	if (input == key[KEY_RIGHT]) {
-		std::cout << "RIGHT" << std::endl;
+		location.y -= 1 * CUBE_SIZE;
+		dir = 2;
+
 	}
 	if (input == key[KEY_LEFT]) {
 		std::cout << "LEFT" << std::endl;
+		location.x -= 1 * CUBE_SIZE;
+		dir = 3;
+	}
+	if (input == key[KEY_RIGHT]) {
+		std::cout << "RIGHT" << std::endl;
+		location.x += 1 * CUBE_SIZE;
+		dir = 4;
+
 	}
 }
 
 void CHARACTER::draw_body(){
-	glRotatef(90, 1, 0, 0);
-	glPushMatrix(); {//个烹
-		glColor3ub(232, 199, 199);
-		glTranslatef(0, 35, 0);
-		glScalef(0.9, 0.6, 0.9);
-		glutSolidCube(CUBE_SIZE);
-		glColor3f(0, 0, 0);
-		//glutWireCube(CUBE_SIZE);
-	}glPopMatrix();
-	glPushMatrix(); {//传
-		glColor3ub(232, 232, 232);
-		glTranslatef(-20, 40, -42);
-		glutSolidSphere(10, 8, 8);
-
-		glColor3f(0, 0, 0);
-		glTranslatef(0,0,-8);
-		glutSolidSphere(5, 8, 8);
-	}glPopMatrix();
-	glPushMatrix(); {//传
-		glColor3ub(232, 232, 232);
-		glTranslatef(20, 40, -42);
-		glutSolidSphere(10, 8, 8);
-
-		glColor3f(0, 0, 0);
-		glTranslatef(0, 0, -8);
-		glutSolidSphere(5, 8, 8);
-	}glPopMatrix();
-	glPushMatrix(); {//捞
-		glColor3ub(232, 232, 232);
-		glTranslatef(-6, 25, -50);
-		glScalef(1, 1.2, 1);
-		glutSolidCube(10);
-		glColor3f(0, 0, 0);
-		//glutWireCube(10);
-	}glPopMatrix();
-	glPushMatrix(); {//捞
-		glColor3ub(232, 232, 232);
-		glTranslatef(6, 25, -50);
-		glScalef(1, 1.2, 1);
-		glutSolidCube(10);
-		glColor3f(0, 0, 0);
-		//glutWireCube(10);
-	}glPopMatrix();
-	glPushMatrix(); {//蓖
-		glColor3ub(232, 199, 199);
-		glTranslatef(25, 80, 0);
-		glScalef(0.2, 0.4, 0.2);
-		glutSolidCube(CUBE_SIZE);
-		glColor3f(0, 0, 0);
-		glutWireCube(CUBE_SIZE);
-	}glPopMatrix();
 	glPushMatrix(); {
-		glColor3ub(232, 199, 199);
-		glTranslatef(-25, 80, 0);
-		glScalef(0.2, 0.4, 0.2);
-		glutSolidCube(CUBE_SIZE);
-		glColor3f(0, 0, 0);
-		glutWireCube(CUBE_SIZE);
-	}glPopMatrix();
-	glPushMatrix(); {//部府
-		glColor3ub(232, 199, 199);
-		glTranslatef(0, 22.5, 50);
-		glutSolidCube(20);
-		glColor3f(0, 0, 0);
-		glutWireCube(20);
+		glTranslatef(location.x, location.y,0);
+		glRotatef(90, 1, 0, 0);
+		if (dir == 2) {
+			glRotatef(180, 0, 1, 0);
+		}
+		if (dir == 3) {
+			glRotatef(90, 0, 1, 0);
+		}
+		if (dir == 4) {
+			glRotatef(-90, 0, 1, 0);
+		}
+		glPushMatrix(); {//个烹
+			glColor3ub(232, 199, 199);
+			glTranslatef(0, 35, 0);
+			glScalef(0.9, 0.6, 0.9);
+			glutSolidCube(CUBE_SIZE);
+			glColor3f(0, 0, 0);
+			//glutWireCube(CUBE_SIZE);
+		}glPopMatrix();
+		glPushMatrix(); {//传
+			glColor3ub(232, 232, 232);
+			glTranslatef(-20, 40, -42);
+			glutSolidSphere(10, 8, 8);
+
+			glColor3f(0, 0, 0);
+			glTranslatef(0, 0, -8);
+			glutSolidSphere(5, 8, 8);
+		}glPopMatrix();
+		glPushMatrix(); {//传
+			glColor3ub(232, 232, 232);
+			glTranslatef(20, 40, -42);
+			glutSolidSphere(10, 8, 8);
+
+			glColor3f(0, 0, 0);
+			glTranslatef(0, 0, -8);
+			glutSolidSphere(5, 8, 8);
+		}glPopMatrix();
+		glPushMatrix(); {//捞
+			glColor3ub(232, 232, 232);
+			glTranslatef(-6, 25, -50);
+			glScalef(1, 1.2, 1);
+			glutSolidCube(10);
+			glColor3f(0, 0, 0);
+			//glutWireCube(10);
+		}glPopMatrix();
+		glPushMatrix(); {//捞
+			glColor3ub(232, 232, 232);
+			glTranslatef(6, 25, -50);
+			glScalef(1, 1.2, 1);
+			glutSolidCube(10);
+			glColor3f(0, 0, 0);
+			//glutWireCube(10);
+		}glPopMatrix();
+		glPushMatrix(); {//蓖
+			glColor3ub(232, 199, 199);
+			glTranslatef(25, 80, 0);
+			glScalef(0.2, 0.4, 0.2);
+			glutSolidCube(CUBE_SIZE);
+		}glPopMatrix();
+		glPushMatrix(); {
+			glColor3ub(232, 199, 199);
+			glTranslatef(-25, 80, 0);
+			glScalef(0.2, 0.4, 0.2);
+			glutSolidCube(CUBE_SIZE);
+		}glPopMatrix();
+		glPushMatrix(); {//部府
+			glColor3ub(232, 199, 199);
+			glTranslatef(0, 22.5, 50);
+			glutSolidCube(20);
+		}glPopMatrix();
 	}glPopMatrix();
 }
 
 void CHARACTER::draw_leg(){
 	glPushMatrix(); {
-		glColor3ub(232, 199, 199);
-		glTranslatef(25, 5, 0);
-		glScalef(0.2, 0.2, 0.2);
-		glutSolidCube(CUBE_SIZE);
-		glColor3f(0, 0, 0);
-		glutWireCube(5);
-	}glPopMatrix();
-	glPushMatrix(); {
-		glColor3ub(232, 199, 199);
-		glTranslatef(-25, 5, 0);
-		glScalef(0.2, 0.2, 0.2);
-		glutSolidCube(CUBE_SIZE);
-		glColor3f(0, 0, 0);
-		glutWireCube(5);
+		glTranslatef(location.x, location.y, 0);
+		glPushMatrix(); {
+			glColor3ub(232, 199, 199);
+			glTranslatef(25, 5, 0);
+			glScalef(0.2, 0.2, 0.2);
+			glutSolidCube(CUBE_SIZE);
+			glColor3f(0, 0, 0);
+			glutWireCube(5);
+		}glPopMatrix();
+		glPushMatrix(); {
+			glColor3ub(232, 199, 199);
+			glTranslatef(-25, 5, 0);
+			glScalef(0.2, 0.2, 0.2);
+			glutSolidCube(CUBE_SIZE);
+			glColor3f(0, 0, 0);
+			glutWireCube(5);
+		}glPopMatrix();
 	}glPopMatrix();
 }
 

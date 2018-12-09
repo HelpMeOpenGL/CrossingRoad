@@ -26,6 +26,7 @@ private:
 	int item_timer;
 	bool b_item_fog;
 	POINT location;
+	int dir;
 public:
 	CHARACTER();
 	~CHARACTER();

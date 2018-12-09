@@ -23,7 +23,6 @@ int MAP[MAP_SIZE_X][MAP_SIZE_Y];
 //============= 캐릭터 =================
 CHARACTER character1;
 
-
 int main(int argc, char *argv[]){
 	global_init();
 	glutInit(&argc, argv);
@@ -39,8 +38,6 @@ int main(int argc, char *argv[]){
 	glutMouseFunc(Mouse);
 	glutPassiveMotionFunc(Motion);
 	glutTimerFunc(10, Timer, 1);
-	
-
 	glutMainLoop();
 	return 0;
 }
@@ -161,10 +158,10 @@ GLvoid drawScene(GLvoid)
 			}
 		}
 	}glPopMatrix();
-		glPushMatrix(); {
-			character1.draw_body();
-			character1.draw_leg();
-		}glPopMatrix();
+	glPushMatrix(); {
+		character1.draw_body();
+		character1.draw_leg();
+	}glPopMatrix();
 		
 	glutSwapBuffers(); // 화면에 출력하기
 }
@@ -182,7 +179,6 @@ GLvoid Reshape(int w, int h)
 
 void Timer(int value) {
 	character1.update();
-
 
 	glutPostRedisplay();
 	glutTimerFunc(10, Timer, 1);
@@ -214,7 +210,6 @@ void Keyboard(unsigned char key, int x, int y) {
 	case ',':
 		glTranslatef(0, -CUBE_SIZE, 0);
 		break;
-<<<<<<< HEAD
 	case 'x':
 		glRotatef(5, 1, 0, 0);
 		break;
@@ -232,10 +227,8 @@ void Keyboard(unsigned char key, int x, int y) {
 		break;
 	case 'Z':
 		glRotatef(-5, 0, 0, 1);
-=======
 	case '1':
 		character1.hit_item(1);//character1.hit_item(character1.use_item()); <<원래는 이런느낌의 코드
->>>>>>> 4bb42c3141cd35e7929e06a21e895f6c02d606c2
 		break;
 	default:
 		break;
@@ -252,6 +245,7 @@ void global_init() {
 	
 
 	character1.KeySetting(GLUT_KEY_UP, GLUT_KEY_DOWN, GLUT_KEY_RIGHT, GLUT_KEY_LEFT);
+
 
 }
 
