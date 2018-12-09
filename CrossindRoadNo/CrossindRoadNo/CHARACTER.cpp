@@ -105,27 +105,20 @@ void CHARACTER::update(){
 			item_timer = 0;
 		}
 	}
-<<<<<<< HEAD
+
 	if (jump_b) {
 		jump_timer++;
 		if (jump_timer <= 7) {
-			jump_height+=2;
+			jump_height += 2;
 		}
 		if (jump_timer > 7) {
-			jump_height-=2;
+			jump_height -= 2;
 		}
-		if (jump_timer == 15) {
+		if (jump_timer >= 15) {
 			jump_timer = 0;
 			jump_b = false;
-		}
-=======
-	jump_timer++;
-	if (jump_timer <= 30) {
-		jump_height++;
-	}
-	if (jump_timer > 30) {
-		jump_height--;
->>>>>>> 1c0c8ce892a3702a1a11850c5997b07984ea5ef6
+		}	
+
 	}
 	if (move_b) {
 		move_timer += 0.1;
@@ -146,7 +139,7 @@ void CHARACTER::update(){
 		default:
 			break;
 		}
-				
+
 		if (move_timer > 1.57) {
 			switch (dir) {
 			case 1:
@@ -168,25 +161,18 @@ void CHARACTER::update(){
 			move_tmp = { 0,0 };
 		}
 	}
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> 1c0c8ce892a3702a1a11850c5997b07984ea5ef6
-	switch (state) {
-	case STATE_IDLE:
-		idle_update();
-		break;
-	case STATE_MOVE:
-		break;
+		switch (state) {
+		case STATE_IDLE:
+			idle_update();
+			break;
+		case STATE_MOVE:
+			break;
 
-	default:
-		break;
-	}
-<<<<<<< HEAD
+		default:
+			break;
+		}
 	
-=======
->>>>>>> 1c0c8ce892a3702a1a11850c5997b07984ea5ef6
 }
 
 void CHARACTER::keyboard(unsigned char input){
