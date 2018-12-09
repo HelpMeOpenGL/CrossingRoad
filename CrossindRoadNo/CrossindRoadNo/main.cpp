@@ -38,7 +38,7 @@ int main(int argc, char *argv[]){
 	glutSpecialFunc(SpecialKeyboard);
 	glutMouseFunc(Mouse);
 	glutPassiveMotionFunc(Motion);
-	glutTimerFunc(100, Timer, 1);
+	glutTimerFunc(10, Timer, 1);
 	
 
 	glutMainLoop();
@@ -181,11 +181,11 @@ GLvoid Reshape(int w, int h)
 }
 
 void Timer(int value) {
-
+	character1.update();
 
 
 	glutPostRedisplay();
-	glutTimerFunc(100, Timer, 1);
+	glutTimerFunc(10, Timer, 1);
 }
 
 void Mouse(int button, int state, int x, int y) {
@@ -214,6 +214,7 @@ void Keyboard(unsigned char key, int x, int y) {
 	case ',':
 		glTranslatef(0, -CUBE_SIZE, 0);
 		break;
+<<<<<<< HEAD
 	case 'x':
 		glRotatef(5, 1, 0, 0);
 		break;
@@ -231,6 +232,10 @@ void Keyboard(unsigned char key, int x, int y) {
 		break;
 	case 'Z':
 		glRotatef(-5, 0, 0, 1);
+=======
+	case '1':
+		character1.hit_item(1);//character1.hit_item(character1.use_item()); <<원래는 이런느낌의 코드
+>>>>>>> 4bb42c3141cd35e7929e06a21e895f6c02d606c2
 		break;
 	default:
 		break;
