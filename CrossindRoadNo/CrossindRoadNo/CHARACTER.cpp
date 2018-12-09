@@ -85,7 +85,6 @@ void CHARACTER::keyboard(unsigned char input){
 		std::cout << "RIGHT" << std::endl;
 		location.x += 1 * CUBE_SIZE;
 		dir = 4;
-
 	}
 }
 
