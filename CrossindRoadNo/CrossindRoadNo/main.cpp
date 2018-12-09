@@ -229,10 +229,6 @@ void Keyboard(unsigned char key, int x, int y) {
 		break;
 	case 'Z':
 		glRotatef(-5, 0, 0, 1);
-<<<<<<< HEAD
-=======
-
->>>>>>> ec7d55378ab2daa277bebabf2bd4f90a523726fa
 	case '1':
 		character1.hit_item(1);//character1.hit_item(character1.use_item()); <<원래는 이런느낌의 코드
 		break;

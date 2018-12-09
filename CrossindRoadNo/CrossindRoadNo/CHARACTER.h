@@ -25,11 +25,8 @@ private:
 	int item_timer;
 	bool b_item_fog;
 	POINT location;
-<<<<<<< HEAD
 	int dir;
-=======
 	int body_color[3];
->>>>>>> ec7d55378ab2daa277bebabf2bd4f90a523726fa
 public:
 	CHARACTER();
 	~CHARACTER();
@@ -55,7 +52,5 @@ public:
 	void KeySetting(unsigned char, unsigned char, unsigned char, unsigned char);
 	void SetBodyColor(int, int, int);
 
-
-	
 };
 
