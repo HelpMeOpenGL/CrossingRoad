@@ -100,10 +100,10 @@ GLvoid drawScene(GLvoid)
 					glPushMatrix(); {
 						glColor3ub(162, 206, 50);
 						glBegin(GL_QUADS);
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * j);
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * (j + 1));
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * (j + 1));
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * j);
 						glEnd();
 					}glPopMatrix();
 					break;
@@ -111,10 +111,10 @@ GLvoid drawScene(GLvoid)
 					glPushMatrix(); {
 						glColor3ub(132, 132, 132);
 						glBegin(GL_QUADS);
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * j);
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * (j + 1));
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * (j + 1));
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * j);
 						glEnd();
 					}glPopMatrix();
 					break;
@@ -122,10 +122,10 @@ GLvoid drawScene(GLvoid)
 					glPushMatrix(); {
 						glColor3ub(152, 186, 50);
 						glBegin(GL_QUADS);
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * j);
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * (j + 1));
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * (j + 1));
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * j);
 						glEnd();
 					}glPopMatrix();
 					break;
@@ -133,10 +133,10 @@ GLvoid drawScene(GLvoid)
 					glPushMatrix(); {
 						glColor3ub(50, 162, 206);
 						glBegin(GL_QUADS);
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * j);
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * (j + 1));
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * (j + 1));
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * j);
 						glEnd();
 						glBegin(GL_QUADS);
 						glEnd();
@@ -146,10 +146,10 @@ GLvoid drawScene(GLvoid)
 					glPushMatrix(); {
 						glColor3ub(232, 232, 232);
 						glBegin(GL_QUADS);
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * (j + 1));
-						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 2) + CUBE_SIZE * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 2) + CUBE_SIZE * j);
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * j);
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * i, (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * (j + 1));
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * (j + 1));
+						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * j);
 						glEnd();
 						glBegin(GL_QUADS);
 						glEnd();
@@ -160,12 +160,12 @@ GLvoid drawScene(GLvoid)
 				}
 			}
 		}
-		/*glPushMatrix(); {
-			
-			test1.Draw();
-		}glPopMatrix();*/
-		
 	}glPopMatrix();
+		glPushMatrix(); {
+			character1.draw_body();
+			character1.draw_leg();
+		}glPopMatrix();
+		
 	glutSwapBuffers(); // 화면에 출력하기
 }
 
@@ -175,7 +175,7 @@ GLvoid Reshape(int w, int h)
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluPerspective(60, (float)1920 / 1080, 1.0, 1000);
-	glTranslatef(0, 0, -300);
+	glTranslatef(0, 0, -500);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 }
@@ -213,6 +213,24 @@ void Keyboard(unsigned char key, int x, int y) {
 		break;
 	case ',':
 		glTranslatef(0, -CUBE_SIZE, 0);
+		break;
+	case 'x':
+		glRotatef(5, 1, 0, 0);
+		break;
+	case 'X':
+		glRotatef(-5, 1, 0, 0);
+		break;
+	case 'y':
+		glRotatef(5, 0, 1, 0);
+		break;
+	case 'Y':
+		glRotatef(-5, 0, 1, 0);
+		break;
+	case 'z':
+		glRotatef(5, 0, 0, 1);
+		break;
+	case 'Z':
+		glRotatef(-5, 0, 0, 1);
 		break;
 	default:
 		break;
