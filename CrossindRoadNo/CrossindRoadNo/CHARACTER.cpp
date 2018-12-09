@@ -39,7 +39,21 @@ void CHARACTER::reset(){
 }
 
 void CHARACTER::draw(){
-
+	glPushMatrix(); {
+		glTranslatef(location.x, location.y, 0);
+		glRotatef(90, 1, 0, 0);
+		if (dir == 2) {
+			glRotatef(180, 0, 1, 0);
+		}
+		if (dir == 3) {
+			glRotatef(90, 0, 1, 0);
+		}
+		if (dir == 4) {
+			glRotatef(-90, 0, 1, 0);
+		}
+		draw_body();
+		draw_leg();
+	}glPopMatrix();
 }
 
 void CHARACTER::update(){
@@ -91,17 +105,6 @@ void CHARACTER::keyboard(unsigned char input){
 
 void CHARACTER::draw_body() {
 	glPushMatrix(); {
-		glTranslatef(location.x, location.y, 0);
-		glRotatef(90, 1, 0, 0);
-		if (dir == 2) {
-			glRotatef(180, 0, 1, 0);
-		}
-		if (dir == 3) {
-			glRotatef(90, 0, 1, 0);
-		}
-		if (dir == 4) {
-			glRotatef(-90, 0, 1, 0);
-		}
 		glPushMatrix(); {//¸öÅë
 			glColor3ub(body_color[0], body_color[1], body_color[2]);
 			glTranslatef(0, 35, 0);
@@ -162,18 +165,6 @@ void CHARACTER::draw_body() {
 
 void CHARACTER::draw_leg(){
 	glPushMatrix(); {
-		glTranslatef(location.x, location.y, 0);
-		glRotatef(90, 1, 0, 0);
-
-		if (dir == 2) {
-			glRotatef(180, 0, 1, 0);
-		}
-		if (dir == 3) {
-			glRotatef(90, 0, 1, 0);
-		}
-		if (dir == 4) {
-			glRotatef(-90, 0, 1, 0);
-		}
 		glPushMatrix(); {
 			glColor3ub(body_color[0] - 20, body_color[1] - 20, body_color[2] - 20);
 			glTranslatef(25, 5, 0);

@@ -160,11 +160,7 @@ GLvoid drawScene(GLvoid)
 			}
 		}
 	}glPopMatrix();
-	glPushMatrix(); {
-		character1.draw_body();
-		character1.draw_leg();
-	}glPopMatrix();
-		
+	character1.draw();		
 	glutSwapBuffers(); // 화면에 출력하기
 }
 
