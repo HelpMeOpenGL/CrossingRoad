@@ -27,6 +27,11 @@ void CHARACTER::init(){
 	location.x = rand() % 20 + 5;
 	location.y = 5;
 	b_item_fog = false;
+	body_color[0] = 232;
+	body_color[1] = 199;
+	body_color[2] = 199;
+	//1 :: R = 232 G = 199 B = 199
+	//2 :: R = 30 G = 120 B = 230
 }
 
 void CHARACTER::reset(){
@@ -77,7 +82,7 @@ void CHARACTER::keyboard(unsigned char input){
 void CHARACTER::draw_body(){
 	glRotatef(90, 1, 0, 0);
 	glPushMatrix(); {//¸öÅë
-		glColor3ub(232, 199, 199);
+		glColor3ub(body_color[0], body_color[1], body_color[2]);
 		glTranslatef(0, 35, 0);
 		glScalef(0.9, 0.6, 0.9);
 		glutSolidCube(CUBE_SIZE);
@@ -88,7 +93,6 @@ void CHARACTER::draw_body(){
 		glColor3ub(232, 232, 232);
 		glTranslatef(-20, 40, -42);
 		glutSolidSphere(10, 8, 8);
-
 		glColor3f(0, 0, 0);
 		glTranslatef(0,0,-8);
 		glutSolidSphere(5, 8, 8);
@@ -119,7 +123,7 @@ void CHARACTER::draw_body(){
 		//glutWireCube(10);
 	}glPopMatrix();
 	glPushMatrix(); {//±Í
-		glColor3ub(232, 199, 199);
+		glColor3ub(body_color[0] - 20, body_color[1] - 20, body_color[2] - 20);
 		glTranslatef(25, 80, 0);
 		glScalef(0.2, 0.4, 0.2);
 		glutSolidCube(CUBE_SIZE);
@@ -127,7 +131,7 @@ void CHARACTER::draw_body(){
 		glutWireCube(CUBE_SIZE);
 	}glPopMatrix();
 	glPushMatrix(); {
-		glColor3ub(232, 199, 199);
+		glColor3ub(body_color[0] - 20, body_color[1] - 20, body_color[2] - 20);
 		glTranslatef(-25, 80, 0);
 		glScalef(0.2, 0.4, 0.2);
 		glutSolidCube(CUBE_SIZE);
@@ -135,7 +139,7 @@ void CHARACTER::draw_body(){
 		glutWireCube(CUBE_SIZE);
 	}glPopMatrix();
 	glPushMatrix(); {//²¿¸®
-		glColor3ub(232, 199, 199);
+		glColor3ub(body_color[0] - 20, body_color[1] - 20, body_color[2] - 20);
 		glTranslatef(0, 22.5, 50);
 		glutSolidCube(20);
 		glColor3f(0, 0, 0);
@@ -145,7 +149,7 @@ void CHARACTER::draw_body(){
 
 void CHARACTER::draw_leg(){
 	glPushMatrix(); {
-		glColor3ub(232, 199, 199);
+		glColor3ub(body_color[0] - 20, body_color[1] - 20, body_color[2] - 20);
 		glTranslatef(25, 5, 0);
 		glScalef(0.2, 0.2, 0.2);
 		glutSolidCube(CUBE_SIZE);
@@ -153,7 +157,7 @@ void CHARACTER::draw_leg(){
 		glutWireCube(5);
 	}glPopMatrix();
 	glPushMatrix(); {
-		glColor3ub(232, 199, 199);
+		glColor3ub(body_color[0] - 20, body_color[1] - 20, body_color[2] - 20);
 		glTranslatef(-25, 5, 0);
 		glScalef(0.2, 0.2, 0.2);
 		glutSolidCube(CUBE_SIZE);
@@ -220,4 +224,10 @@ void CHARACTER::KeySetting(unsigned char front, unsigned char back, unsigned cha
 	key[KEY_BACK] = back;	
 	key[KEY_RIGHT] = right;
 	key[KEY_LEFT] = left;
+}
+
+void CHARACTER::SetBodyColor(int R, int G, int B) {
+	body_color[0] = R;
+	body_color[1] = G;
+	body_color[2] = B;
 }

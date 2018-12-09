@@ -19,6 +19,8 @@ void Draw_Barrier(int Type, int x, int y);
 
 //============= 맵 =====================
 int MAP[MAP_SIZE_X][MAP_SIZE_Y];
+int cameramove = 0;
+
 
 //============= 캐릭터 =================
 CHARACTER character1;
@@ -214,7 +216,6 @@ void Keyboard(unsigned char key, int x, int y) {
 	case ',':
 		glTranslatef(0, -CUBE_SIZE, 0);
 		break;
-<<<<<<< HEAD
 	case 'x':
 		glRotatef(5, 1, 0, 0);
 		break;
@@ -232,10 +233,9 @@ void Keyboard(unsigned char key, int x, int y) {
 		break;
 	case 'Z':
 		glRotatef(-5, 0, 0, 1);
-=======
+
 	case '1':
 		character1.hit_item(1);//character1.hit_item(character1.use_item()); <<원래는 이런느낌의 코드
->>>>>>> 4bb42c3141cd35e7929e06a21e895f6c02d606c2
 		break;
 	default:
 		break;
@@ -249,9 +249,12 @@ void SpecialKeyboard(int key, int x, int y) {
 }
 void global_init() {
 	LoadFile();
-	
 
+
+	//1 :: R = 232 G = 199 B = 199
+	//2 :: R = 30 G = 120 B = 230
 	character1.KeySetting(GLUT_KEY_UP, GLUT_KEY_DOWN, GLUT_KEY_RIGHT, GLUT_KEY_LEFT);
+	character1.SetBodyColor(232, 199, 199);
 
 }
 

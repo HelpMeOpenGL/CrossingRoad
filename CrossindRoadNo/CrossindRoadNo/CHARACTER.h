@@ -13,7 +13,6 @@
 #define ITEM_FOG 3 //안개
 
 class CHARACTER{
-
 private:
 	int local_time;
 	int type;
@@ -26,6 +25,7 @@ private:
 	int item_timer;
 	bool b_item_fog;
 	POINT location;
+	int body_color[3];
 public:
 	CHARACTER();
 	~CHARACTER();
@@ -49,6 +49,9 @@ public:
 	void hit_item(int);
 	//키보드 키 세팅
 	void KeySetting(unsigned char, unsigned char, unsigned char, unsigned char);
+	void SetBodyColor(int, int, int);
+
+
 	
 };
 
