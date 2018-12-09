@@ -35,6 +35,7 @@ private:
 	POINT location;
 	int dir;
 	int body_color[3];
+<<<<<<< HEAD
 
 	bool jump_b;
 	int jump_timer;
@@ -45,12 +46,20 @@ private:
 	POINT move_tmp;//이거는 이동하는 크기 저장
 	double moveTmp;//0~1까지 메소드 내에서 쓰임
 
+=======
+	int jump_timer;
+	int jump_height;
+
+>>>>>>> 1c0c8ce892a3702a1a11850c5997b07984ea5ef6
 	float idle_LR_T;
 	float idle_UD_T;
 	bool idle_LR;
 	bool idle_UD;
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 1c0c8ce892a3702a1a11850c5997b07984ea5ef6
 public:
 	CHARACTER();
 	~CHARACTER();

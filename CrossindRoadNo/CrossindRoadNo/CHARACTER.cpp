@@ -105,6 +105,7 @@ void CHARACTER::update(){
 			item_timer = 0;
 		}
 	}
+<<<<<<< HEAD
 	if (jump_b) {
 		jump_timer++;
 		if (jump_timer <= 7) {
@@ -117,6 +118,14 @@ void CHARACTER::update(){
 			jump_timer = 0;
 			jump_b = false;
 		}
+=======
+	jump_timer++;
+	if (jump_timer <= 30) {
+		jump_height++;
+	}
+	if (jump_timer > 30) {
+		jump_height--;
+>>>>>>> 1c0c8ce892a3702a1a11850c5997b07984ea5ef6
 	}
 	if (move_b) {
 		move_timer += 0.1;
@@ -159,7 +168,11 @@ void CHARACTER::update(){
 			move_tmp = { 0,0 };
 		}
 	}
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 1c0c8ce892a3702a1a11850c5997b07984ea5ef6
 	switch (state) {
 	case STATE_IDLE:
 		idle_update();
@@ -170,7 +183,10 @@ void CHARACTER::update(){
 	default:
 		break;
 	}
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 1c0c8ce892a3702a1a11850c5997b07984ea5ef6
 }
 
 void CHARACTER::keyboard(unsigned char input){
