@@ -27,6 +27,9 @@ private:
 	POINT location;
 	int dir;
 	int body_color[3];
+	int jump_timer;
+	int jump_height;
+
 public:
 	CHARACTER();
 	~CHARACTER();

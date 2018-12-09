@@ -40,7 +40,7 @@ void CHARACTER::reset(){
 
 void CHARACTER::draw(){
 	glPushMatrix(); {
-		glTranslatef(location.x, location.y, 0);
+		glTranslatef(location.x, location.y, jump_height);
 		glRotatef(90, 1, 0, 0);
 		if (dir == 2) {
 			glRotatef(180, 0, 1, 0);
@@ -73,6 +73,17 @@ void CHARACTER::update(){
 			item_timer = 0;
 		}
 	}
+	jump_timer++;
+	if (jump_timer <= 30) {
+		jump_height++;
+	}
+	if (jump_timer > 30) {
+		jump_height--;
+	}
+	if (jump_timer == 60) {
+		jump_timer = 0;
+	}
+
 }
 
 void CHARACTER::keyboard(unsigned char input){
