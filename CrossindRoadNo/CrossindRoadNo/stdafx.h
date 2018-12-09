@@ -19,6 +19,7 @@
 
 #define CUBE_SIZE 100 //한칸의 크기 < 어느정도 점프할지랑 이것저것 요긴하게 쓰일듯
 #define WORLD_SIZE 1000
+#define CAR_NUM 30
 
 #define SCENE_LOBBY 10000
 #define SCENE_MAINGAME 10001

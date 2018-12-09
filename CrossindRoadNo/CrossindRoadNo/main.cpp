@@ -29,6 +29,13 @@ int cameramove = 0;
 //============= 캐릭터 =================
 CHARACTER character1;
 
+struct CAR {
+	int x= -(CUBE_SIZE*MAP_SIZE_X / 4);
+	int type;
+	int timer;
+	bool go = false;
+}car[CAR_NUM];
+
 int main(int argc, char *argv[]){
 	global_init();
 	glutInit(&argc, argv);
@@ -144,95 +151,96 @@ GLvoid drawScene(GLvoid)
 	glEnable(GL_DEPTH_TEST);
 	//큐브맵
 	//텍스처불러오기
-	glGenTextures(6, textures);
-	glBindTexture(GL_TEXTURE_2D, textures[0]);
-	pBytes = LoadDIBitmap("skybox_top.bmp", &info);
-	glTexImage2D(GL_TEXTURE_2D, 0, 3, 256, 256, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, GL_MODULATE);
+	//glGenTextures(6, textures);
+	//glBindTexture(GL_TEXTURE_2D, textures[0]);
+	//pBytes = LoadDIBitmap("skybox_top.bmp", &info);
+	//glTexImage2D(GL_TEXTURE_2D, 0, 3, 256, 256, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	//glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, GL_MODULATE);
 
-	glBindTexture(GL_TEXTURE_2D, textures[1]);
-	pBytes = LoadDIBitmap("skybox_left.bmp", &info);
-	glTexImage2D(GL_TEXTURE_2D, 0, 3, 256, 256, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, GL_MODULATE);
+	//glBindTexture(GL_TEXTURE_2D, textures[1]);
+	//pBytes = LoadDIBitmap("skybox_left.bmp", &info);
+	//glTexImage2D(GL_TEXTURE_2D, 0, 3, 256, 256, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	//glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, GL_MODULATE);
 
-	glBindTexture(GL_TEXTURE_2D, textures[2]);
-	pBytes = LoadDIBitmap("skybox_front.bmp", &info);
-	glTexImage2D(GL_TEXTURE_2D, 0, 3, 256, 256, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, GL_MODULATE);
+	//glBindTexture(GL_TEXTURE_2D, textures[2]);
+	//pBytes = LoadDIBitmap("skybox_front.bmp", &info);
+	//glTexImage2D(GL_TEXTURE_2D, 0, 3, 256, 256, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	//glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, GL_MODULATE);
 
-	glBindTexture(GL_TEXTURE_2D, textures[3]);
-	pBytes = LoadDIBitmap("skybox_right.bmp", &info);
-	glTexImage2D(GL_TEXTURE_2D, 0, 3, 256, 256, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, GL_MODULATE);
+	//glBindTexture(GL_TEXTURE_2D, textures[3]);
+	//pBytes = LoadDIBitmap("skybox_right.bmp", &info);
+	//glTexImage2D(GL_TEXTURE_2D, 0, 3, 256, 256, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	//glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, GL_MODULATE);
 
-	glBindTexture(GL_TEXTURE_2D, textures[4]);
-	pBytes = LoadDIBitmap("skybox_back.bmp", &info);
-	glTexImage2D(GL_TEXTURE_2D, 0, 3, 256, 256, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, GL_MODULATE);
+	//glBindTexture(GL_TEXTURE_2D, textures[4]);
+	//pBytes = LoadDIBitmap("skybox_back.bmp", &info);
+	//glTexImage2D(GL_TEXTURE_2D, 0, 3, 256, 256, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	//glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, GL_MODULATE);
 
-	glBindTexture(GL_TEXTURE_2D, textures[5]);
-	pBytes = LoadDIBitmap("skybox_bottom.bmp", &info);
-	glTexImage2D(GL_TEXTURE_2D, 0, 3, 256, 256, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, GL_MODULATE);
+	//glBindTexture(GL_TEXTURE_2D, textures[5]);
+	//pBytes = LoadDIBitmap("skybox_bottom.bmp", &info);
+	//glTexImage2D(GL_TEXTURE_2D, 0, 3, 256, 256, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, pBytes);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	//glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, GL_MODULATE);
 
-	glEnable(GL_TEXTURE_2D);
-		glBindTexture(GL_TEXTURE_2D, textures[2]);
-		glBegin(GL_QUADS);
-		{
-			glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
-			//위
-			glTexCoord2f(1, 1);
-			glVertex3f(WORLD_SIZE, WORLD_SIZE, WORLD_SIZE);
-			glTexCoord2f(0, 1);
-			glVertex3f(-WORLD_SIZE, WORLD_SIZE, WORLD_SIZE);
-			glTexCoord2f(0.0, 0.0);
-			glVertex3f(-WORLD_SIZE, WORLD_SIZE, -WORLD_SIZE);
-			glTexCoord2f(1, 0);
-			glVertex3f(WORLD_SIZE, WORLD_SIZE, -WORLD_SIZE);
-		}
-		glEnd();
-	glPushMatrix(); {
-		glRotatef(90, 0, 1, 0);
-		glBindTexture(GL_TEXTURE_2D, textures[1]);
-		glBegin(GL_QUADS);
-		{
-			//왼쪽
-			glTexCoord2f(1, 1);
-			glVertex3f(-WORLD_SIZE, WORLD_SIZE, -WORLD_SIZE);
-			glTexCoord2f(0, 1);
-			glVertex3f(-WORLD_SIZE, WORLD_SIZE, WORLD_SIZE);
-			glTexCoord2f(0, 0);
-			glVertex3f(-WORLD_SIZE, -WORLD_SIZE, WORLD_SIZE);
-			glTexCoord2f(1, 0);
-			glVertex3f(-WORLD_SIZE, -WORLD_SIZE, -WORLD_SIZE);
+	//glEnable(GL_TEXTURE_2D);
+	//	glBindTexture(GL_TEXTURE_2D, textures[2]);
+	//	glBegin(GL_QUADS);
+	//	{
+	//		glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
+	//		//앞
+	//		glTexCoord2f(1, 1);
+	//		glVertex3f(WORLD_SIZE, WORLD_SIZE, WORLD_SIZE);
+	//		glTexCoord2f(0, 1);
+	//		glVertex3f(-WORLD_SIZE, WORLD_SIZE, WORLD_SIZE);
+	//		glTexCoord2f(0.0, 0.0);
+	//		glVertex3f(-WORLD_SIZE, WORLD_SIZE, -WORLD_SIZE);
+	//		glTexCoord2f(1, 0);
+	//		glVertex3f(WORLD_SIZE, WORLD_SIZE, -WORLD_SIZE);
+	//	}
+	//	glEnd();
+	//glPushMatrix(); {
+	//	glRotatef(90, 0, 1, 0);
+	//	glBindTexture(GL_TEXTURE_2D, textures[1]);
+	//	glBegin(GL_QUADS);
+	//	{
+	//		//왼쪽
+	//		glTexCoord2f(1, 1);
+	//		glVertex3f(-WORLD_SIZE, WORLD_SIZE, -WORLD_SIZE);
+	//		glTexCoord2f(0, 1);
+	//		glVertex3f(-WORLD_SIZE, WORLD_SIZE, WORLD_SIZE);
+	//		glTexCoord2f(0, 0);
+	//		glVertex3f(-WORLD_SIZE, -WORLD_SIZE, WORLD_SIZE);
+	//		glTexCoord2f(1, 0);
+	//		glVertex3f(-WORLD_SIZE, -WORLD_SIZE, -WORLD_SIZE);
 
-		}
-		glEnd();
-	}glPopMatrix();
+	//	}
+	//	glEnd();
+	//}glPopMatrix();
+
 	//맵 잘찍히나 테스트
 	glPushMatrix(); {
 		glRotated(-90, 1, 0, 0);
@@ -308,7 +316,18 @@ GLvoid drawScene(GLvoid)
 			}
 		}
 	}glPopMatrix();
-	character1.draw();		
+	character1.draw();
+
+	//자동차그리기
+	for (int i = 0; i < CAR_NUM; i++) {
+		if (car[i].go == true) {
+			glPushMatrix(); {
+				glTranslatef(car[i].x, 0, 0);
+				glColor3ub(188, 123, 50);
+				glutSolidCube(CUBE_SIZE);
+			}glPopMatrix();
+		}
+	}
 	glutSwapBuffers(); // 화면에 출력하기
 }
 
@@ -325,9 +344,15 @@ GLvoid Reshape(int w, int h)
 
 void Timer(int value) {
 	character1.update();
-
+	car[0].go = true;
 	glutPostRedisplay();
 	glutTimerFunc(10, Timer, 1);
+	//자동차마다 타이머두자
+	for (int i = 0; i < CAR_NUM; i++) {
+		if(car[i].go==true)
+		car[i].x++;
+	}
+	
 }
 
 void Mouse(int button, int state, int x, int y) {
