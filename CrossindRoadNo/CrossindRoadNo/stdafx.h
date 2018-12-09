@@ -32,6 +32,7 @@
 
 struct CAR {
 	int x = 0;
+	int y = 0;
 	int type;
 	int timer;
 	bool go = false;

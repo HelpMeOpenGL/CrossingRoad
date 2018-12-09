@@ -258,7 +258,7 @@ GLvoid drawScene(GLvoid)
 						glEnd();
 					}glPopMatrix();
 					break;
-				case 1:
+				case 1://도로
 					glPushMatrix(); {
 						glColor3ub(132, 132, 132);
 						glBegin(GL_QUADS);
@@ -268,6 +268,7 @@ GLvoid drawScene(GLvoid)
 						glVertex3f((GLfloat)-(CUBE_SIZE*MAP_SIZE_X / 4) + CUBE_SIZE/2 * (i + 1), (GLfloat)0, (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE/2 * j);
 						glEnd();
 					}glPopMatrix();
+					car[j].y = (GLfloat)-(CUBE_SIZE*MAP_SIZE_Y / 4) + CUBE_SIZE / 2 * i;
 					break;
 				case 2://벽
 					glPushMatrix(); {
@@ -306,6 +307,9 @@ GLvoid drawScene(GLvoid)
 						glEnd();
 					}glPopMatrix();
 					break;
+				case 5:
+
+					break;
 				default:
 					break;
 				}
@@ -319,7 +323,7 @@ GLvoid drawScene(GLvoid)
 	for (int i = 0; i < CAR_NUM; i++) {
 		if (car[i].go == true) {
 			glPushMatrix(); {
-				glTranslatef(car[i].x, 0, 0);
+				glTranslatef(car[i].x, car[i].y, 0);
 				glColor3ub(188, 123, 50);
 				glutSolidCube(CUBE_SIZE);
 			}glPopMatrix();
@@ -342,15 +346,19 @@ GLvoid Reshape(int w, int h)
 void Timer(int value) {
 	character1.update();
 	character2.update();
-
-	car[0].go = true;
-	glutPostRedisplay();
-	glutTimerFunc(10, Timer, 1);
 	//자동차마다 타이머두자
 	for (int i = 0; i < CAR_NUM; i++) {
-		if(car[i].go==true)
-		car[i].x++;
+		if (car[i].y != 0) {
+			car[i].timer++;
+			if (car[i].timer == 180) {
+				car[i].go = true;
+			}
+		}
+		//if (car[i].go == true)
+			//car[i].x++;
 	}
+	glutPostRedisplay();
+	glutTimerFunc(10, Timer, 1);
 	
 }
 
@@ -358,6 +366,7 @@ void Mouse(int button, int state, int x, int y) {
 
 
 }
+
 void Motion(int x, int y) {
 
 }

@@ -419,9 +419,9 @@ void CHARACTER::push_crush_check(int CrushType){
 
 }
 
-void CHARACTER::update_map_obj(CAR data[CAR_NUM]){
-
-}
+//void CHARACTER::update_map_obj(CAR data[CAR_NUM]){
+//
+//}
 
 int CHARACTER::use_item(){
 	//======= 디버그 필요 ===========
